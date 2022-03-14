@@ -1,0 +1,51 @@
+.homeAbout {
+display: flex;
+align-items: center;
+background-color: #0c0617;
+
+}
+
+.about-text {
+  
+  span {
+    font-family: "Satisfy", cursive;
+    color: #e934ff;
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+  h2 {
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  p {
+    font-size: 15px;
+    color: #c4c4c4;
+    line-height: 1.7;
+    padding-bottom: 25px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 14px;
+    padding: 20px 33px 15px;
+    min-width: 149px;
+    color: #fff;
+    line-height: 1;
+    text-align: center;
+    font-weight: 700;
+
+    border: none;
+    text-transform: uppercase;
+
+    background: linear-gradient(45deg, #503aca 0%, #ea34ff 100%);
+  }
+}
+
+.aboutImg {
+  z-index: 60;
+
+}
+
+@media screen and (max-width: 1024px) {
+  
+}

@@ -1,0 +1,45 @@
+.breadcrumb-row {
+  position: relative;
+  margin-bottom: 176px;
+  top: 140px;
+}
+.breadcrumb {
+  display: flex;
+  .br-icon {
+    width: 85px;
+    height: 85px;
+    font-size: 27px;
+    color: #fff;
+    float: left;
+    margin-right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #503aca 0%, #ea34ff 100%);
+  
+  }
+  .br-title{
+      h1{
+          color: #fff;
+      }
+  }
+  .br-subtitle{
+      position: relative;
+      position: relative;
+      top: 55px;
+      right: 92px;
+      a{
+          text-decoration: none;
+          color: #fff;
+          span{
+            color: #888;
+          }
+      }
+
+  }
+}
+#tour{
+    background-color: #0c0617;
+    height: 1224px;
+}
