@@ -88,6 +88,11 @@ nav {
     }
   }
 }
+.user{
+  border-radius: 50%;
+  width: 6%;
+  overflow: hidden;
+}
 @media screen and (max-width: 768px) {
   nav {
       .logo{
