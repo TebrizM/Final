@@ -4,7 +4,7 @@
 
 .player_left {
   position: relative;
-  height: 954px;
+  height: 1024px;
   background-image: url(/assets/media/tracks-photos/2.jpg.webp);
   background-repeat: no-repeat;
   background-size: cover;
@@ -69,6 +69,9 @@
 
       padding: 30px 65px 10px;
       border-bottom: 1px solid #262037;
+      &:hover{
+        background: rgba(98, 98, 160, 0.158);
+      }
     }
   }
 }
@@ -183,3 +186,13 @@
         right: 60px;
     }
 }    
+@media screen and (max-width: 320px){
+  .playlists{
+    ul{
+      li{
+        height: 72px !important;
+        padding: 30px 29px 10px !important; 
+      }
+    }
+  }
+}

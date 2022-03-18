@@ -1,0 +1,40 @@
+#myPlaylist {
+  background-color: #0c0617;
+  height: 1140px;
+}
+
+.sidebar-header {
+  padding-top: 150px;
+  color: #fff;
+
+}
+.sidebar-main {
+  ul {
+    li {
+      a {
+        color: #fff;
+        text-decoration: none;
+        list-style: none;
+        line-height: 2.5rem;
+      }
+    }
+  }
+}
+.sidebar-col{
+  padding-left: 100px;
+  background-color: rgba(128, 128, 128, 0.342);
+  height: 1001px;
+  width: 350px;
+
+}
+.playlist-cont{
+  display: flex;
+}
+.list-row{
+  width: 100%;
+    padding-top: 190px;
+    padding-left: 100px;
+}
+.list-header{
+  color: #fff;
+}
