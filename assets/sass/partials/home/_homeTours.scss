@@ -167,12 +167,13 @@
 }
 @media screen and(max-width: 425px) {
     #tours{
-        height: 1951px;
+        height: auto;
     }
   .tours-list {
     ul {
       li {
         flex-direction: column !important;
+        margin-bottom: 130px;
         .tour-date {
           i {
             position: relative;

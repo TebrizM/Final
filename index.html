@@ -30,6 +30,7 @@
 </head>
 
 <body>
+  
   <header>
     <nav class="nav top">
       <input type="checkbox" id="nav-toggle">
@@ -41,16 +42,16 @@
           <a class="active-nav-btn" href="">Home</a>
         </li>
         <li>
+          <a href="albums.html">Albums</a>
+        </li>
+        <li>
           <a href="tours.html">Tours</a>
         </li>
         <li>
           <a href="blog.html">Blog</a>
         </li>
         <li>
-          <a href="albums.html">Albums</a>
-        </li>
-        <li>
-          <a href="">My Playlist</a>
+          <a href="myPlaylist.html">My Playlist</a>
         </li>
         <li>
           <a href="./login.html"><i class="bi bi-box-arrow-in-right"></i></a> 
@@ -72,7 +73,9 @@
     </nav>
   </header>
   <main>
-
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
     <section class="homeHero">
       <div class="container">
         <div class="slider">
@@ -108,9 +111,7 @@
       </div>
     </section>
     <section class="homeAbout">
-      <span id="stars"></span>
-      <span id="stars2"></span>
-      <span id="stars3"></span>
+  
       <div class="container">
         <div class="row  align-items-center">
           <div class="col-12 col-lg-6"">
@@ -279,9 +280,7 @@
                   </div>
                   <div class="col-lg-7 col-sm-8 text-right">
                     <div class="controls">
-                      <div class="shuffle-btn">
-                        <i class="fa-solid fa-shuffle"></i>
-                      </div>
+                
                       <div class="track-btn prev-track">
                         <i class="fa-solid fa-backward" id="back"></i>
                       </div>
@@ -294,7 +293,7 @@
                       <div class="track-btn">
                         <i class="fa-solid fa-volume-high"></i>
                       </div>
-                      <div class="track-timer">
+                      <div class="track-timers">
                         <span class="current-time" id="currentStart">00:00</span>
                         /
                         <span class="total-time" id="currentEnd">03:06</span>

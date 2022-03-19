@@ -111,14 +111,7 @@
   justify-content: space-between;
   font-size: 33px;
   color: #fff;
-  .shuffle-btn {
-    width: 30px;
-    font-size: 20px;
-    margin-right: 5px;
-    border: none;
-    color: #fff;
-    background: transparent;
-  }
+ 
   .track-btn {
     width: 30px;
     font-size: 20px;
@@ -143,8 +136,8 @@
       color: white;
     }
   }
-  .track-timer {
-    width: 120px;
+  .track-timers {
+    width: 100px;
     display: inline-block;
     font-size: 16px;
     font-weight: 600;
