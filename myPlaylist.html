@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
     integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,233 +25,257 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
 </head>
+
 <body class="myPlaylistBody">
-    <header>
-      <nav class="nav top">
-        <input type="checkbox" id="nav-toggle">
-        <div class="logo">
-          <h3>HN<span>Band</span></h3>
+  <header>
+    <nav class="nav top">
+      <input type="checkbox" id="nav-toggle">
+      <div class="logo">
+        <h3>HN<span>Band</span></h3>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a class="active-nav-btn" href="">Home</a>
+        </li>
+        <li>
+          <a href="albums.html">Albums</a>
+        </li>
+        <li>
+          <a href="tours.html">Tours</a>
+        </li>
+        <li>
+          <a href="blog.html">Blog</a>
+        </li>
+        <li>
+          <a href="myPlaylist.html">My Playlist</a>
+        </li>
+        <li>
+          <a href="./login.html"><i class="bi bi-box-arrow-in-right"></i></a>
+        </li>
+        <div class="user">
+          <img src="./assets/media/userPhotos/71331428_2525995110821251_1870810324467187712_n.jpg" alt="user"
+            title="test">
         </div>
-        <ul class="nav-links">
-          <li>
-            <a class="active-nav-btn" href="">Home</a>
-          </li>
-          <li>
-            <a href="albums.html">Albums</a>
-          </li>
-          <li>
-            <a href="tours.html">Tours</a>
-          </li>
-          <li>
-            <a href="blog.html">Blog</a>
-          </li>
-          <li>
-            <a href="myPlaylist.html">My Playlist</a>
-          </li>
-          <li>
-            <a href="./login.html"><i class="bi bi-box-arrow-in-right"></i></a> 
-          </li>
-          <div class="user">
-            <img src="./assets/media/userPhotos/71331428_2525995110821251_1870810324467187712_n.jpg" alt="user"
-              title="test">
-          </div>
-          
-  
-        </ul>
-  
-        <label for="nav-toggle" class="icon-burger">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </label>
-  
-      </nav>
-       
-      </header>
 
-      <main>
-        <section id="myPlaylist">
-          <div class="container-fluid playlist-cont">
-            <div class="row">
-              <div class="col-12 col-lg-2 sidebar-col">
-                <div class="sidebar-header">
-                  <h2>Genres</h2>
-          
-                </div>
-                <div class="sidebar-main">
-                  <ul>
-                    <li>
-                      <a href="">Metal  <span>(5)</span></a>         
-                    </li>
-                    <li>
-                      <a href="">Hip-Hop  <span>(5)</span></a>         
-                    </li>
-                    <li>
-                      <a href="">Rap  <span>(5)</span></a>         
-                    </li>
-                    <li>
-                      <a href="">Rock  <span>(5)</span></a>         
-                    </li>
-                  </ul>
-                </div>
-              </div>
+
+      </ul>
+
+      <label for="nav-toggle" class="icon-burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
+
+    </nav>
+
+  </header>
+
+  <main>
+    <section id="myPlaylist">
+      <div class="container-fluid playlist-cont">
+        <div class="row">
+          <div class="col-12 col-lg-2 sidebar-col">
+            <div class="sidebar-header">
+              <h2>Genres</h2>
+
             </div>
-            <div class="row list-row">
-              <div class="col-12 col-lg-10">
-                <div class="list-header">
-                  <h1>My Playlist</h1>
-                </div>
-                <ul class="album-playlist">
-                  <li class="albums-songs">
-                    <div class="albums-play-btns">
-              
-                      <i class="fa-solid fa-play"></i>
-          
-                    </div>
-                    <div class="albums-track-name">
-                      <h4>clone</h4>
-                    </div>
-                    <div class="albums-track-timer">
-                      <p>03 / <span>59</span></p>
-                    </div>
-                  </li>
-                  <li class="albums-songs">
-                    <div class="albums-play-btns">
-
-                      <i class="fa-solid fa-play"></i>
-         
-                    </div>
-                    <div class="albums-track-name">
-                      <h4>Lizard Skin</h4>
-                     
-                    </div>
-                    <div class="albums-track-timer">
-                      <p>03 / <span>59</span></p>
-                    </div>
-                  </li>
-                  <li class="albums-songs">
-                    <div class="albums-play-btns">
-                      <i class="fa-solid fa-play"></i>
-                    </div>
-                    <div class="albums-track-name">
-                      <h4>Satan is a Lawyer</h4>
-                     
-                    </div>
-                    <div class="albums-track-timer">
-                      <p>03 / <span>59</span></p>
-                    </div>
-                  </li>
-                  <li class="albums-songs">
-                    <div class="albums-play-btns">
-
-                      <i class="fa-solid fa-play"></i>
-
-                    </div>
-                    <div class="albums-track-name">
-                      <h4>04</h4>
-                     
-                    </div>
-                    <div class="albums-track-timer">
-                      <p>03 / <span>59</span></p>
-                    </div>
-                  </li>
-                  <li class="albums-songs">
-                    <div class="albums-play-btns">
-
-                      <i class="fa-solid fa-play"></i>
-
-                    </div>
-                    <div class="albums-track-name">
-                      <h4>Blow Me Away You</h4>
-                     
-                    </div>
-                    <div class="albums-track-timer">
-                      <p>03 / <span>59</span></p>
-                    </div>
-                  </li>
-                  <li class="albums-songs">
-                    <div class="albums-play-btns">
-
-                      <i class="fa-solid fa-play"></i>
-
-                    </div>
-                    <div class="albums-track-name">
-                      <h4>Fire is Everything</h4>
-                     
-                    </div>
-                    <div class="albums-track-timer">
-                      <p>03 / <span>59</span></p>
-                    </div>
-                  </li>
-                  <li class="albums-songs">
-                    <div class="albums-play-btns">
-                
-                      <i class="fa-solid fa-play"></i>
-             
-                    </div>
-                    <div class="albums-track-name">
-                      <h4>In The Forest</h4>
-                     
-                    </div>
-                    <div class="albums-track-timer">
-                      <p>03 / <span>59</span></p>
-                    </div>
-                  </li>
-               
-                </ul>
-              </div>
+            <div class="sidebar-main">
+              <ul>
+                <li>
+                  <a href="">Metal <span>(5)</span></a>
+                </li>
+                <li>
+                  <a href="">Hip-Hop <span>(5)</span></a>
+                </li>
+                <li>
+                  <a href="">Rap <span>(5)</span></a>
+                </li>
+                <li>
+                  <a href="">Rock <span>(5)</span></a>
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-12 col-lg-12">
-                <div class="bottom-menu">
-                  <div class="bottom-menu-btn">
-                    <i class="bi bi-arrow-left-circle-fill"></i>
-                    <i class="bi bi-play-circle-fill"></i>
-                    <i class="bi bi-arrow-right-circle-fill"></i>
-                  </div>
-                  <div class="bottom-menu-track-name">
-                    <h3>From The Sky</h3>
-                    
-                  </div>
-                  <div class="track-seek">
-                    <div class="track-timer">
-                      0:00
-                    </div>
-                    <div class="music-range">
-                      <input type="range">
+        </div>
+        <div class="row list-row">
+          <div class="col-12 col-lg-10">
+            <div class="list-header">
+              <h1>My Playlist</h1>
+            </div>
+            <ul class="album-playlist">
+              <li class="albums-songs">
+                <div class="albums-play-btns">
 
-                    </div>
-                    <div class="track-timer">
-                      8:59
-                    </div>
-                    <div class="bottom-track-volume">
-                      <i class="bi bi-volume-up-fill"></i>
-                    </div>
-                  </div>
+                  <i class="fa-solid fa-play"></i>
 
-                  <div class="bottom-track-img">
-                    <img src="./assets/media/albums/1.jpg" alt="">
-                  </div>
                 </div>
+                <div class="albums-track-name">
+                  <h4>clone</h4>
+                </div>
+                <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                <div class="albums-track-timer">
+                  <p>03 / <span>59</span></p>
+                </div>
+              </li>
+              <li class="albums-songs">
+                <div class="albums-play-btns">
+
+                  <i class="fa-solid fa-play"></i>
+
+                </div>
+                <div class="albums-track-name">
+                  <h4>Lizard Skin</h4>
+
+                </div>
+                <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                <div class="albums-track-timer">
+                  <p>03 / <span>59</span></p>
+                </div>
+              </li>
+              <li class="albums-songs">
+                <div class="albums-play-btns">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+                <div class="albums-track-name">
+                  <h4>Satan is a Lawyer</h4>
+
+                </div>
+                <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                <div class="albums-track-timer">
+                  <p>03 / <span>59</span></p>
+                </div>
+              </li>
+              <li class="albums-songs">
+                <div class="albums-play-btns">
+
+                  <i class="fa-solid fa-play"></i>
+
+                </div>
+                <div class="albums-track-name">
+                  <h4>04</h4>
+
+                </div>
+                <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                <div class="albums-track-timer">
+                  <p>03 / <span>59</span></p>
+                </div>
+              </li>
+              <li class="albums-songs">
+                <div class="albums-play-btns">
+
+                  <i class="fa-solid fa-play"></i>
+
+                </div>
+                <div class="albums-track-name">
+                  <h4>Blow Me Away You</h4>
+
+                </div>
+                <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                <div class="albums-track-timer">
+                  <p>03 / <span>59</span></p>
+                </div>
+              </li>
+              <li class="albums-songs">
+                <div class="albums-play-btns">
+
+                  <i class="fa-solid fa-play"></i>
+
+                </div>
+                <div class="albums-track-name">
+                  <h4>Fire is Everything</h4>
+
+                </div>
+                <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                <div class="albums-track-timer">
+                  <p>03 / <span>59</span></p>
+                </div>
+              </li>
+              <li class="albums-songs">
+                <div class="albums-play-btns">
+
+                  <i class="fa-solid fa-play"></i>
+
+                </div>
+                <div class="albums-track-name">
+                  <h4>In The Forest</h4>
+
+                </div>
+                <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                <div class="albums-track-timer">
+                  <p>03 / <span>59</span></p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid music-container">
+        <div class="row">
+          <div class="col-12 col-lg-12">
+            <div class="bottom-menu">
+              <div class="navigation">
+                <button id="prev" class="action-btn">
+                  <i class="fas fa-backward"></i>
+                </button>
+                <button id="play" class="action-btn action-btn-big">
+                  <i class="fas fa-play"></i>
+                </button>
+                <button id="next" class="action-btn">
+                  <i class="fas fa-forward"></i>
+                </button>
+              </div>
+              <div class="bottom-menu-track-name">
+                <h3 id="title">From The Sky</h3>
+
+              </div>
+              <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+              <div class="track-seek">
+                <div class="track-timer">
+                  0:00
+                </div>
+                <div class="music-range">
+                  <input type="range" class="progress">
+
+                </div>
+                <div class="track-timer">
+                  8:59
+                </div>
+                <div class="bottom-track-volume">
+                  <i class="bi bi-volume-up-fill"></i>
+                </div>
+              </div>
+
+              <div class="bottom-track-img">
+                <img id="cover" src="./assets/media/albums/1.jpg" alt="">
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
-      </main>
+  </main>
 
 
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="./assets/Js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script src="./assets/Js/main.js"></script>
 </body>
+
 </html>
