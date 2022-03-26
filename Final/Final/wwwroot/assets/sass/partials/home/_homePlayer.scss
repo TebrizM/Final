@@ -38,7 +38,7 @@
   padding-top: 30px;
 }
 .player-right {
-  padding-top: 70px;
+  
   .section-title {
     padding-left: 65px;
   
@@ -92,6 +92,38 @@
   span {
     font-weight: 600;
     color: #fff;
+  }
+}
+
+.add-btn{
+  a{
+    text-decoration: none;
+    color: #fff;
+    padding: 17px 10px 15px;
+    position: relative;
+    background: transparent;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: linear-gradient(50deg, #503aca 0%, #ea34ff 100%);
+    z-index: 1;
+    float: right;
+    min-width: 149px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s linear;
+    right: 10px;
+    &:hover {
+      float: right;
+      min-width: 149px;
+      color: #fff;
+      line-height: 1;
+      text-align: center;
+      border: none;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, #503aca 0%, #ea34ff 100%);
+    }
   }
 }
 .track-info-left {
@@ -151,7 +183,15 @@
   background: rgba(255, 255, 255, 0.35);
   cursor: pointer;
 }
-
+@media screen and (max-width: 1024px) {
+  .playlists{
+    ul{
+      li{
+        padding: 0 !important;
+      }
+    }
+  }
+}
 @media screen and (max-width: 768px) {
   .player_left {
     left: 0;
@@ -162,11 +202,17 @@
 
 @media screen and (max-width: 375px){
     .player-right{
-        
-         height: 814px;
+        padding-top: 25px !important;
+         height: auto;
+    }
+    .add-btn{
+      a{
+        width: 100px !important;
+        min-width: 100px !important;
+      }
     }
     .section-title{
-        margin-top: 25px;
+      padding-top: 0px !important;
         h2{
             font-size: 15px !important;
         }
@@ -176,16 +222,23 @@
     }
     .play-btn{
         position: relative;
-        right: 60px;
+
     }
 }    
 @media screen and (max-width: 320px){
   .playlists{
     ul{
       li{
-        height: 72px !important;
-        padding: 30px 29px 10px !important; 
+     
       }
     }
+  }
+  .track-info{
+    h4{
+      font-size: medium;
+    }
+    p{
+      display: none
+    };
   }
 }

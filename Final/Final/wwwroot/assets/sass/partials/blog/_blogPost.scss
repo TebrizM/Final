@@ -29,8 +29,12 @@
   
     cursor: pointer;
     a{
-        color: #fff;
+        color: #ffffffb3;
         text-decoration: none;
+
+        &:hover{
+            color: #fff;
+        }
     }
 }
 .loadmore-btn{

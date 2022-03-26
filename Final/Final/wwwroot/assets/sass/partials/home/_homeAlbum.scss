@@ -36,6 +36,9 @@
         
     }
 }
+.album-cont{
+    padding-top: 21rem;
+}
 .album-card{
     margin-bottom: 30px;
 }
@@ -54,6 +57,9 @@
     line-height: 1.7;
 }
 
+.vip-member{
+    filter: blur(5px);
+}
 @media screen and (max-width: 768px) {
     #albums{
         height: 2255px;

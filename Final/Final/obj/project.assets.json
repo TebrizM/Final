@@ -8724,11 +8724,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wacht\\OneDrive\\Desktop\\FinalProject\\Final\\Final\\Final.csproj",
+      "projectUniqueName": "C:\\Users\\wacht\\OneDrive\\Desktop\\Final\\Final\\Final\\Final.csproj",
       "projectName": "Final",
-      "projectPath": "C:\\Users\\wacht\\OneDrive\\Desktop\\FinalProject\\Final\\Final\\Final.csproj",
+      "projectPath": "C:\\Users\\wacht\\OneDrive\\Desktop\\Final\\Final\\Final\\Final.csproj",
       "packagesPath": "C:\\Users\\wacht\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wacht\\OneDrive\\Desktop\\FinalProject\\Final\\Final\\obj\\",
+      "outputPath": "C:\\Users\\wacht\\OneDrive\\Desktop\\Final\\Final\\Final\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wacht\\AppData\\Roaming\\NuGet\\NuGet.Config",

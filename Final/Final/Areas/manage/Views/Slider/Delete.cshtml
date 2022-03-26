@@ -1,0 +1,21 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Delete";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Delete</h1>
+            <form asp-action="delete" method="post">
+                <div class="form-group">
+                    <label asp-for="Title1">Title</label>
+                    <input class="form-control" asp-for="Title1" placeholder="Enter Title">
+                    <span class="text-danger" asp-validation-for="Title1"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

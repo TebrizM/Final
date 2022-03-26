@@ -1,10 +1,20 @@
 #checkoutPage {
   background-color: #0c0617;
   height: auto;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/assets/media/login/54ba1aebeb5c5c92105f430009db074c.jpg);
 }
 .checkout-billing {
   color: #fff;
   h3 {
+    
+    padding: 20px;
+
     font-size: 24px;
     font-weight: 500;
     border-bottom: 1px solid #e5e5e5;
@@ -38,6 +48,9 @@
 .checkout-summary {
   color: #fff;
   h3 {
+    
+    padding: 20px;
+
     font-size: 24px;
     font-weight: 500;
     border-bottom: 1px solid #e5e5e5;
@@ -92,4 +105,7 @@
 }
 .phone-inp{
     margin-bottom: 15px;
+}
+.checkout-row{
+  background-color: rgba(252, 250, 250, 0.473);
 }

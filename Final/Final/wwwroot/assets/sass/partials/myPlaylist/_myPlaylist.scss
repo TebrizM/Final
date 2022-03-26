@@ -10,10 +10,11 @@
 .sidebar-main {
   ul {
     li {
+      list-style: none;
       a {
         color: #fff;
         text-decoration: none;
-        list-style: none;
+
         line-height: 2.5rem;
       }
     }
@@ -24,6 +25,7 @@
   background-color: rgba(128, 128, 128, 0.342);
   height: auto;
   width: 350px;
+  border-bottom: 1px rgba(128, 128, 128, 0.377) solid;
 }
 .playlist-cont {
   display: flex;
@@ -56,6 +58,29 @@
     i {
       color: #fff;
       font-size: xx-large;
+    }
+  }
+}
+.sidebar-artist{
+  padding-bottom: 510px;
+  padding-top: 25px;
+ 
+}
+.sidebar-header-artist{
+  h2{
+    color: #fff;
+  }
+}
+.sidebar-main-artist{
+  ul{
+    li {
+      list-style: none;
+      a {
+        color: #fff;
+        text-decoration: none;
+        list-style: none;
+        line-height: 2.5rem;
+      }
     }
   }
 }
@@ -261,6 +286,12 @@ input[type="range"]:focus::-ms-fill-upper {
 
     h3 {
       left: 190px;
+    }
+  }
+  .navigation{
+    i {
+
+      font-size: medium !important;
     }
   }
 
