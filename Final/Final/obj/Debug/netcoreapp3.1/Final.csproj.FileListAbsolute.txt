@@ -471,3 +471,7 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Final.
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Final.dll
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Final.pdb
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Final.genruntimeconfig.cache
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Singer\Index.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Singer\Create.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Singer\Edit.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Singer\Delete.cshtml.g.cs
