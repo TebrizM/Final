@@ -26,5 +26,7 @@ namespace Final.Models
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Tours> Tours { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
     }
 }

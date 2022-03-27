@@ -1,0 +1,80 @@
+﻿@model PaginatedList<BlogComment>
+@{
+
+    int counter = (Model.PageIndex - 1) * Model.PageSize;
+    var temp = -1;
+    if (Model.PageIndex == 1)
+    {
+        temp = 0;
+    }
+    if (Model.PageIndex == 0)
+    {
+        temp = 1;
+    }
+    if (temp == Model.TotalPages)
+    {
+        temp = -2;
+    }
+
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 d-flex justify-content-between">
+            <h3>Comments</h3>
+            <a asp-action="create" class="btn btn-primary">Create</a>
+        </div>
+        <div class="col-lg-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        counter++;
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@item.Text</td>
+                            <td>
+                                <a asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    @if (Model.PageIndex > 1)
+                    {
+                        <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="1" asp-route-isDeleted="@ViewBag.IsDeleted">@("<<")</a></li>
+                        <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex-1)" asp-route-isDeleted="@ViewBag.IsDeleted">@("<")</a></li>
+                    }
+
+                    @for (int i = 1; i <= 3; i++, temp++)
+                    {
+                        if ((Model.PageIndex + temp) != 0 && (Model.PageIndex + temp) != -1)
+                        {
+                            <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex+temp)" asp-route-filter="@ViewBag.Filter" style="display:@((Model.PageIndex+temp)>Model.TotalPages?"none":"block")">@(Model.PageIndex+temp)</a></li>
+                        }
+
+                    }
+
+                    @if (Model.PageIndex < Model.TotalPages)
+                    {
+                        <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex+1)" asp-route-isDeleted="@ViewBag.IsDeleted">></a></li>
+                        <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@Model.TotalPages" asp-route-isDeleted="@ViewBag.IsDeleted">>></a></li>
+                    }
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

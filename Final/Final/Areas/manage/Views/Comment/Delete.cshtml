@@ -1,0 +1,21 @@
+﻿@model BlogComment
+@{
+    ViewData["Title"] = "Delete";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Delete</h1>
+            <form asp-action="delete" method="post">
+                <div class="form-group">
+                    <label asp-for="Text">Title</label>
+                    <input class="form-control" asp-for="Text" placeholder="Enter Text">
+                    <span class="text-danger" asp-validation-for="Text"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

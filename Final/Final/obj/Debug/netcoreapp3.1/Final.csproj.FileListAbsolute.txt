@@ -475,3 +475,7 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Singer\Create.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Singer\Edit.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Singer\Delete.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Settings\Index.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Settings\Edit.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Comment\Delete.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Comment\Index.cshtml.g.cs

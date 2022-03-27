@@ -11,11 +11,14 @@ namespace Final.Models
         [Required]
         [StringLength(maximumLength: 150)]
         public string Name { get; set; }
-        public string SingerId { get; set; }
-
+        public int AlbumId { get; set; }
+        public int BandId { get; set; }
+        public int GenreId { get; set; }
         public int TrackLength { get; set; }
-       public string PlayBtn { get; set; }
-        
-        public Singer Singer { get; set; }
+        public string PlayBtn { get; set; }
+        public Genre Genre { get; set; }
+        public Band Band { get; set; }
+        public Album Album { get; set; }
+
     }
 }

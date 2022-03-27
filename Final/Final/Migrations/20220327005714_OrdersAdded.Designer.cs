@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final.Migrations
 {
     [DbContext(typeof(HnBandContext))]
-    [Migration("20220326224621_DatabaseCreated")]
-    partial class DatabaseCreated
+    [Migration("20220327005714_OrdersAdded")]
+    partial class OrdersAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -245,6 +245,105 @@ namespace Final.Migrations
                     b.ToTable("Genres");
                 });
 
+            modelBuilder.Entity("Final.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(350)")
+                        .HasMaxLength(350);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(350)")
+                        .HasMaxLength(350);
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Final.Models.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("CostPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("DiscountPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SalePrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ToursId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ToursId");
+
+                    b.ToTable("OrderItems");
+                });
+
             modelBuilder.Entity("Final.Models.Settings", b =>
                 {
                     b.Property<int>("Id")
@@ -379,13 +478,16 @@ namespace Final.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AlbumId")
+                    b.Property<int>("AlbumId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BandId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("GenreId")
+                    b.Property<int>("GenreId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -402,10 +504,7 @@ namespace Final.Migrations
                     b.Property<string>("PlayBtn")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SingerId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SingerId1")
+                    b.Property<int?>("SingerId")
                         .HasColumnType("int");
 
                     b.Property<int>("TrackLength")
@@ -415,9 +514,11 @@ namespace Final.Migrations
 
                     b.HasIndex("AlbumId");
 
+                    b.HasIndex("BandId");
+
                     b.HasIndex("GenreId");
 
-                    b.HasIndex("SingerId1");
+                    b.HasIndex("SingerId");
 
                     b.ToTable("Tracks");
                 });
@@ -670,7 +771,7 @@ namespace Final.Migrations
                         .WithMany()
                         .HasForeignKey("AppUserId");
 
-                    b.HasOne("Final.Models.Blog", null)
+                    b.HasOne("Final.Models.Blog", "Blog")
                         .WithMany("BlogComments")
                         .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -682,6 +783,28 @@ namespace Final.Migrations
                     b.HasOne("Final.Models.Blog", "Blog")
                         .WithMany("BlogImages")
                         .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Final.Models.Order", b =>
+                {
+                    b.HasOne("Final.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+                });
+
+            modelBuilder.Entity("Final.Models.OrderItem", b =>
+                {
+                    b.HasOne("Final.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Final.Models.Tours", "Tours")
+                        .WithMany()
+                        .HasForeignKey("ToursId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -701,17 +824,27 @@ namespace Final.Migrations
 
             modelBuilder.Entity("Final.Models.Track", b =>
                 {
-                    b.HasOne("Final.Models.Album", null)
+                    b.HasOne("Final.Models.Album", "Album")
                         .WithMany("Tracks")
-                        .HasForeignKey("AlbumId");
+                        .HasForeignKey("AlbumId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Final.Models.Genre", null)
-                        .WithMany("Tracks")
-                        .HasForeignKey("GenreId");
+                    b.HasOne("Final.Models.Band", "Band")
+                        .WithMany()
+                        .HasForeignKey("BandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Final.Models.Singer", "Singer")
+                    b.HasOne("Final.Models.Genre", "Genre")
                         .WithMany("Tracks")
-                        .HasForeignKey("SingerId1");
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Final.Models.Singer", null)
+                        .WithMany("Tracks")
+                        .HasForeignKey("SingerId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

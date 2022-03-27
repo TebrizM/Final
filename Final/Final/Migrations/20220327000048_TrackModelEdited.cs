@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Final.Migrations
 {
-    public partial class DatabaseCreated : Migration
+    public partial class TrackModelEdited : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -416,12 +416,12 @@ namespace Final.Migrations
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     ModifiedAt = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 150, nullable: false),
-                    SingerId = table.Column<string>(nullable: true),
+                    AlbumId = table.Column<int>(nullable: false),
+                    BandId = table.Column<int>(nullable: false),
+                    GenreId = table.Column<int>(nullable: false),
                     TrackLength = table.Column<int>(nullable: false),
                     PlayBtn = table.Column<string>(nullable: true),
-                    SingerId1 = table.Column<int>(nullable: true),
-                    AlbumId = table.Column<int>(nullable: true),
-                    GenreId = table.Column<int>(nullable: true)
+                    SingerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -431,16 +431,22 @@ namespace Final.Migrations
                         column: x => x.AlbumId,
                         principalTable: "Albums",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tracks_Bands_BandId",
+                        column: x => x.BandId,
+                        principalTable: "Bands",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tracks_Genres_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genres",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tracks_Singers_SingerId1",
-                        column: x => x.SingerId1,
+                        name: "FK_Tracks_Singers_SingerId",
+                        column: x => x.SingerId,
                         principalTable: "Singers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -526,14 +532,19 @@ namespace Final.Migrations
                 column: "AlbumId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tracks_BandId",
+                table: "Tracks",
+                column: "BandId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tracks_GenreId",
                 table: "Tracks",
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tracks_SingerId1",
+                name: "IX_Tracks_SingerId",
                 table: "Tracks",
-                column: "SingerId1");
+                column: "SingerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
