@@ -1,0 +1,64 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Edit";
+    int counter = 0;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 mx-auto">
+            <h1>Edit</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">FullName: @Model.FullName</h5>
+                    <h5 class="card-title">Phone: @Model.PhoneNumber</h5>
+                    <h5 class="card-title">Email: @Model.Email</h5>
+                    <h5 class="card-title">Country: @Model.Country</h5>
+                    <h5 class="card-title">City: @Model.City</h5>
+                    <h5 class="card-title">Address: @Model.Address</h5>
+                    <h5 class="card-title">TotalPrice: @Model.TotalPrice</h5>
+                    <h5 class="card-title">Date: @Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</h5>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Count</th>
+                                <th scope="col">Unit Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderItems)
+                            {
+                                counter++;
+                                <tr>
+                                    <th scope="row">@counter</th>
+                                    <td>@item.Tours.Info</td>
+                                    <td>@item.Count</td>
+                                    <td>@item.DiscountPrice</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <form asp-action="edit" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <select class="form-control" asp-for="Status" asp-items="Html.GetEnumSelectList<Final.Enums.OrderStatus>()">
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

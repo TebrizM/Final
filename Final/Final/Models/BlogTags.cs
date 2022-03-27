@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace Final.Models
 {
-    public class Band : BaseEntity
+    public class BlogTags
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public List<Singer> Singers { get; set; }
+        public List<BlogTags> BlogTag { get; set; }
     }
 }

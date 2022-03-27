@@ -15,10 +15,11 @@ namespace Final.Models
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<AlbumImage> AlbumImages { get; set; }
-        public DbSet<Band> Bands { get; set; }
+
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogComment> BlogComments { get; set; }
         public DbSet<BlogImage> BlogImages { get; set; }
+        public DbSet<BlogTags> BlogTags { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Singer> Singers { get; set; }
