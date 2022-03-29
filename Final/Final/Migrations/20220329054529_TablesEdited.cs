@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Final.Migrations
 {
-    public partial class BandTableRemoved : Migration
+    public partial class TablesEdited : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,47 +61,14 @@ namespace Final.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     ModifiedAt = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    Desc = table.Column<string>(nullable: true),
+                    Quote = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Blogs", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BlogTags",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    BlogTagsId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BlogTags", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BlogTags_BlogTags_BlogTagsId",
-                        column: x => x.BlogTagsId,
-                        principalTable: "BlogTags",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Genders",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    ModifiedAt = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Genders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -135,6 +102,23 @@ namespace Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Singers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    ModifiedAt = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    isBand = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Singers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sliders",
                 columns: table => new
                 {
@@ -158,14 +142,13 @@ namespace Final.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
                     Info = table.Column<string>(nullable: true),
                     SalePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CostPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DiscountPercent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsAvaiable = table.Column<bool>(nullable: false),
                     Location = table.Column<string>(nullable: true),
-                    Time = table.Column<string>(nullable: true),
                     BtnText = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -340,22 +323,19 @@ namespace Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BlogImages",
+                name: "BlogTags",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    ModifiedAt = table.Column<DateTime>(nullable: false),
-                    Image = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
                     BlogId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BlogImages", x => x.Id);
+                    table.PrimaryKey("PK_BlogTags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlogImages_Blogs_BlogId",
+                        name: "FK_BlogTags_Blogs_BlogId",
                         column: x => x.BlogId,
                         principalTable: "Blogs",
                         principalColumn: "Id",
@@ -363,7 +343,7 @@ namespace Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Singers",
+                name: "Albums",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -371,19 +351,24 @@ namespace Final.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     ModifiedAt = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Age = table.Column<byte>(nullable: false),
-                    GenderId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    SingerId = table.Column<int>(nullable: false),
                     Image = table.Column<string>(nullable: true),
-                    isBand = table.Column<bool>(nullable: false)
+                    GenreId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Singers", x => x.Id);
+                    table.PrimaryKey("PK_Albums", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Singers_Genders_GenderId",
-                        column: x => x.GenderId,
-                        principalTable: "Genders",
+                        name: "FK_Albums_Genres_GenreId",
+                        column: x => x.GenreId,
+                        principalTable: "Genres",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Albums_Singers_SingerId",
+                        column: x => x.SingerId,
+                        principalTable: "Singers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -419,85 +404,33 @@ namespace Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Albums",
+                name: "AlbumTrack",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    ModifiedAt = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    SingerId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Albums", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Albums_Singers_SingerId",
-                        column: x => x.SingerId,
-                        principalTable: "Singers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AlbumImages",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    ModifiedAt = table.Column<DateTime>(nullable: false),
-                    Image = table.Column<string>(nullable: true),
+                    TackName = table.Column<string>(maxLength: 150, nullable: false),
                     AlbumId = table.Column<int>(nullable: false),
-                    AlbumStatus = table.Column<bool>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AlbumImages", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AlbumImages_Albums_AlbumId",
-                        column: x => x.AlbumId,
-                        principalTable: "Albums",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Tracks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    ModifiedAt = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 150, nullable: false),
-                    AlbumId = table.Column<int>(nullable: false),
-                    GenreId = table.Column<int>(nullable: false),
-                    TrackLength = table.Column<int>(nullable: false),
-                    PlayBtn = table.Column<string>(nullable: true),
+                    GenreId = table.Column<int>(nullable: true),
                     SingerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tracks", x => x.Id);
+                    table.PrimaryKey("PK_AlbumTrack", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tracks_Albums_AlbumId",
+                        name: "FK_AlbumTrack_Albums_AlbumId",
                         column: x => x.AlbumId,
                         principalTable: "Albums",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tracks_Genres_GenreId",
+                        name: "FK_AlbumTrack_Genres_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genres",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Tracks_Singers_SingerId",
+                        name: "FK_AlbumTrack_Singers_SingerId",
                         column: x => x.SingerId,
                         principalTable: "Singers",
                         principalColumn: "Id",
@@ -505,13 +438,28 @@ namespace Final.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AlbumImages_AlbumId",
-                table: "AlbumImages",
-                column: "AlbumId");
+                name: "IX_Albums_GenreId",
+                table: "Albums",
+                column: "GenreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Albums_SingerId",
                 table: "Albums",
+                column: "SingerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AlbumTrack_AlbumId",
+                table: "AlbumTrack",
+                column: "AlbumId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AlbumTrack_GenreId",
+                table: "AlbumTrack",
+                column: "GenreId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AlbumTrack_SingerId",
+                table: "AlbumTrack",
                 column: "SingerId");
 
             migrationBuilder.CreateIndex(
@@ -564,14 +512,9 @@ namespace Final.Migrations
                 column: "BlogId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogImages_BlogId",
-                table: "BlogImages",
-                column: "BlogId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BlogTags_BlogTagsId",
+                name: "IX_BlogTags_BlogId",
                 table: "BlogTags",
-                column: "BlogTagsId");
+                column: "BlogId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
@@ -587,32 +530,12 @@ namespace Final.Migrations
                 name: "IX_Orders_AppUserId",
                 table: "Orders",
                 column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Singers_GenderId",
-                table: "Singers",
-                column: "GenderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tracks_AlbumId",
-                table: "Tracks",
-                column: "AlbumId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tracks_GenreId",
-                table: "Tracks",
-                column: "GenreId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tracks_SingerId",
-                table: "Tracks",
-                column: "SingerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AlbumImages");
+                name: "AlbumTrack");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -633,9 +556,6 @@ namespace Final.Migrations
                 name: "BlogComments");
 
             migrationBuilder.DropTable(
-                name: "BlogImages");
-
-            migrationBuilder.DropTable(
                 name: "BlogTags");
 
             migrationBuilder.DropTable(
@@ -648,7 +568,7 @@ namespace Final.Migrations
                 name: "Sliders");
 
             migrationBuilder.DropTable(
-                name: "Tracks");
+                name: "Albums");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -663,19 +583,13 @@ namespace Final.Migrations
                 name: "Tours");
 
             migrationBuilder.DropTable(
-                name: "Albums");
-
-            migrationBuilder.DropTable(
                 name: "Genres");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Singers");
 
             migrationBuilder.DropTable(
-                name: "Genders");
+                name: "AspNetUsers");
         }
     }
 }

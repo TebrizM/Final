@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace Final.Models
 {
-    public class BlogTags
+    public class Tags
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int BlogId { get; set; }
-        public Blog Blog { get; set; }
-
+        List <Blog> Blogs { get; set; }
     }
 }

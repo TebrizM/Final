@@ -9,7 +9,7 @@ namespace Final.Models
     public class Tours
     {
         public int Id { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public string Info { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal SalePrice { get; set; }
@@ -19,7 +19,7 @@ namespace Final.Models
         public decimal DiscountPercent { get; set; }
         public bool IsAvaiable { get; set; }
         public string Location { get; set; }
-        public string Time { get; set; }
+    
         public string BtnText { get; set; }
     }
 }

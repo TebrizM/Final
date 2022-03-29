@@ -14,13 +14,12 @@ namespace Final.Models
         [StringLength(maximumLength: 50)]
         public string Name { get; set; }
         public int SingerId { get; set; }
-
+        public string Image { get; set; }
         public int GenreId { get; set; }
         [NotMapped]
-        public IFormFile PosterFile { get; set; }
+        public IFormFile AlbumImage { get; set; }
         public Singer Singer { get; set; }
-        public List<Track> Tracks { get; set; }
-        public List<Genre> Genres { get; set; }
-        public List<AlbumImage> AlbumImages { get; set; }
+        public List<AlbumTrack> AlbumTracks { get; set; }
+        public Genre Genres { get; set; }
     }
 }

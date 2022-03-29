@@ -6,19 +6,14 @@ using System.Threading.Tasks;
 
 namespace Final.Models
 {
-    public class Track : BaseEntity
+    public class AlbumTrack
     {
+
+        public int Id { get; set; }
         [Required]
         [StringLength(maximumLength: 150)]
-        public string Name { get; set; }
+        public string TackName { get; set; }
         public int AlbumId { get; set; }
-
-        public int GenreId { get; set; }
-        public int TrackLength { get; set; }
-        public string PlayBtn { get; set; }
-        public Genre Genre { get; set; }
-
         public Album Album { get; set; }
-
     }
 }

@@ -42,23 +42,25 @@
                     @foreach (var item in Model)
                     {
                         counter++;
-                        <tr>
-                            <th scope="row">@counter</th>
-                            <td>@item.Name</td>
-                            <td>@item.Singer.Name</td>
-                            <td>
-                                @foreach (var songs in item.Tracks)
-                                {
-                                    <span>@songs.Name</span>
-                                }
-                            </td>
-                            <td>@item.Genres</td>
-                            <td><img width="75" src="~/uploads/products/@item.AlbumImages.FirstOrDefault(x=>x.AlbumStatus==true)?.Image" /></td>
-                            <td>
-                                <a asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                                <a asp-controller="product" asp-action="@(item.IsDeleted?"restore":"delete")" asp-route-id="@item.Id" class="btn btn-@(item.IsDeleted?"info":"danger")">@(item.IsDeleted?"Restore":"Delete")</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <th scope="row">@counter</th>
+                        <td>@item.Name</td>
+                        <td>@item.Singer.Name</td>
+                        <td>
+                            @foreach (var songs in item.AlbumTracks)
+                            {
+                                <span>@songs.TackName</span>
+                            }
+                        </td>
+                        <td>@item.Genres</td>
+                        <td>
+                            <img width="100" src="~/uploads/albums/@item.Image" />
+                        </td>
+                        <td>
+                            <a asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                            <a asp-controller="product" asp-action="@(item.IsDeleted?"restore":"delete")" asp-route-id="@item.Id" class="btn btn-@(item.IsDeleted?"info":"danger")">@(item.IsDeleted?"Restore":"Delete")</a>
+                        </td>
+                    </tr>
                     }
 
                 </tbody>

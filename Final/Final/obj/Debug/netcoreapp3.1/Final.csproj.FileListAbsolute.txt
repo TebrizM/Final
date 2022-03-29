@@ -482,3 +482,4 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Order\Index.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Order\Edit.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Album\Index.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Album\Create.cshtml.g.cs

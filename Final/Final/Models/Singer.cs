@@ -11,14 +11,11 @@ namespace Final.Models
     {
 
         public string Name { get; set; }
-        public byte Age { get; set; }
-        public int GenderId {get;set;}
-        public string Image { get; set; }
         public bool isBand { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
-        public List<Track> Tracks { get; set; }
+        public List<AlbumTrack> Tracks { get; set; }
         public List<Album> Albums { get; set; }
-        public Gender Gender { get; set; }
+
     }
 }

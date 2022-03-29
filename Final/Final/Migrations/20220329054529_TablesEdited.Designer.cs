@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final.Migrations
 {
     [DbContext(typeof(HnBandContext))]
-    [Migration("20220327105223_BandTableRemoved")]
-    partial class BandTableRemoved
+    [Migration("20220329054529_TablesEdited")]
+    partial class TablesEdited
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,12 @@ namespace Final.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -47,12 +53,14 @@ namespace Final.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GenreId");
+
                     b.HasIndex("SingerId");
 
                     b.ToTable("Albums");
                 });
 
-            modelBuilder.Entity("Final.Models.AlbumImage", b =>
+            modelBuilder.Entity("Final.Models.AlbumTrack", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,26 +70,26 @@ namespace Final.Migrations
                     b.Property<int>("AlbumId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("AlbumStatus")
-                        .HasColumnType("bit");
+                    b.Property<int?>("GenreId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("SingerId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("TackName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
 
                     b.HasKey("Id");
 
                     b.HasIndex("AlbumId");
 
-                    b.ToTable("AlbumImages");
+                    b.HasIndex("GenreId");
+
+                    b.HasIndex("SingerId");
+
+                    b.ToTable("AlbumTrack");
                 });
 
             modelBuilder.Entity("Final.Models.Blog", b =>
@@ -94,6 +102,12 @@ namespace Final.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -101,6 +115,9 @@ namespace Final.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Quote")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -140,7 +157,7 @@ namespace Final.Migrations
                     b.ToTable("BlogComments");
                 });
 
-            modelBuilder.Entity("Final.Models.BlogImage", b =>
+            modelBuilder.Entity("Final.Models.BlogTags", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,69 +167,14 @@ namespace Final.Migrations
                     b.Property<int>("BlogId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("BlogImages");
-                });
-
-            modelBuilder.Entity("Final.Models.BlogTags", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("BlogTagsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogTagsId");
-
                     b.ToTable("BlogTags");
-                });
-
-            modelBuilder.Entity("Final.Models.Gender", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Genders");
                 });
 
             modelBuilder.Entity("Final.Models.Genre", b =>
@@ -365,17 +327,8 @@ namespace Final.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte>("Age")
-                        .HasColumnType("tinyint");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("GenderId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -390,8 +343,6 @@ namespace Final.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GenderId");
 
                     b.ToTable("Singers");
                 });
@@ -439,8 +390,8 @@ namespace Final.Migrations
                     b.Property<decimal>("CostPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("DiscountPercent")
                         .HasColumnType("decimal(18,2)");
@@ -457,59 +408,9 @@ namespace Final.Migrations
                     b.Property<decimal>("SalePrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Time")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Tours");
-                });
-
-            modelBuilder.Entity("Final.Models.Track", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AlbumId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("GenreId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.Property<string>("PlayBtn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SingerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrackLength")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AlbumId");
-
-                    b.HasIndex("GenreId");
-
-                    b.HasIndex("SingerId");
-
-                    b.ToTable("Tracks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -738,6 +639,12 @@ namespace Final.Migrations
 
             modelBuilder.Entity("Final.Models.Album", b =>
                 {
+                    b.HasOne("Final.Models.Genre", "Genres")
+                        .WithMany()
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Final.Models.Singer", "Singer")
                         .WithMany("Albums")
                         .HasForeignKey("SingerId")
@@ -745,13 +652,21 @@ namespace Final.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Final.Models.AlbumImage", b =>
+            modelBuilder.Entity("Final.Models.AlbumTrack", b =>
                 {
                     b.HasOne("Final.Models.Album", "Album")
-                        .WithMany("AlbumImages")
+                        .WithMany("AlbumTracks")
                         .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Final.Models.Genre", null)
+                        .WithMany("Tracks")
+                        .HasForeignKey("GenreId");
+
+                    b.HasOne("Final.Models.Singer", null)
+                        .WithMany("Tracks")
+                        .HasForeignKey("SingerId");
                 });
 
             modelBuilder.Entity("Final.Models.BlogComment", b =>
@@ -767,20 +682,13 @@ namespace Final.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Final.Models.BlogImage", b =>
+            modelBuilder.Entity("Final.Models.BlogTags", b =>
                 {
                     b.HasOne("Final.Models.Blog", "Blog")
-                        .WithMany("BlogImages")
+                        .WithMany("BlogTag")
                         .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Final.Models.BlogTags", b =>
-                {
-                    b.HasOne("Final.Models.BlogTags", null)
-                        .WithMany("BlogTag")
-                        .HasForeignKey("BlogTagsId");
                 });
 
             modelBuilder.Entity("Final.Models.Order", b =>
@@ -803,34 +711,6 @@ namespace Final.Migrations
                         .HasForeignKey("ToursId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Final.Models.Singer", b =>
-                {
-                    b.HasOne("Final.Models.Gender", "Gender")
-                        .WithMany("Singers")
-                        .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Final.Models.Track", b =>
-                {
-                    b.HasOne("Final.Models.Album", "Album")
-                        .WithMany("Tracks")
-                        .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Final.Models.Genre", "Genre")
-                        .WithMany("Tracks")
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Final.Models.Singer", null)
-                        .WithMany("Tracks")
-                        .HasForeignKey("SingerId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

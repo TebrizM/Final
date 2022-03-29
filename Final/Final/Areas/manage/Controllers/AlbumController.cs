@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,7 +25,7 @@ namespace Final.Areas.manage.Controllers
         {
             ViewBag.IsDeleted = isDeleted;
 
-            var products = _context.Albums.Include(x => x.Singer).Include(x => x.Tracks).Include(x => x.AlbumImages)
+            var products = _context.Albums.Include(x => x.Singer).Include(x => x.AlbumTracks)
                 .Include(x => x.Genres).AsQueryable();
 
             if (isDeleted != null)
@@ -39,8 +40,8 @@ namespace Final.Areas.manage.Controllers
         public IActionResult Create()
         {
             ViewBag.Genres = _context.Genres.ToList();
-            ViewBag.Brands = _context.Singers.Where(x => !x.IsDeleted).ToList();
-            ViewBag.Types = _context.Tracks.ToList();
+            ViewBag.Singers = _context.Singers.Where(x => !x.IsDeleted).ToList();
+            ~
        
 
             return View();
@@ -49,32 +50,39 @@ namespace Final.Areas.manage.Controllers
         public IActionResult Create(Album album)
         {
             ViewBag.Genres = _context.Genres.ToList();
-            ViewBag.Brands = _context.Singers.Where(x => !x.IsDeleted).ToList();
-            ViewBag.Types = _context.Tracks.ToList();
+            ViewBag.Singers = _context.Singers.Where(x => !x.IsDeleted).ToList();
+
 
             if (!ModelState.IsValid)
                 return View();
 
-            if (album.PosterFile == null)
+            if (album.AlbumImage == null)
             {
                 ModelState.AddModelError("PosterFile", "PosterFile is required");
                 return View();
             }
             else
             {
-                if (album.PosterFile.ContentType != "image/jpeg" && album.PosterFile.ContentType != "image/png")
+                if (album.AlbumImage.ContentType != "image/jpeg" && album.AlbumImage.ContentType != "image/png")
                 {
                     ModelState.AddModelError("PosterFile", "file type must be image/jpeg or image/png");
                     return View();
                 }
 
-                if (album.PosterFile.Length > 2097152)
+                if (album.AlbumImage.Length > 4194304)
                 {
-                    ModelState.AddModelError("PosterFile", "file size must be less than 2mb");
+                    ModelState.AddModelError("PosterFile", "file size must be less than 4 mb");
                     return View();
                 }
             }
+            album.Image = Guid.NewGuid().ToString() + album.AlbumImage.FileName;
 
+            string path = Path.Combine(_env.WebRootPath, "uploads/albums", album.Image);
+
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                album.AlbumImage.CopyTo(stream);
+            }
 
             if (!_context.Genres.Any(x => x.Id == album.GenreId))
             {
@@ -87,15 +95,6 @@ namespace Final.Areas.manage.Controllers
                 return View();
             }
 
-            album.AlbumImages = new List<AlbumImage>();
-           
-            AlbumImage posterImage = new AlbumImage
-            {
-                AlbumStatus = true,
-                Image = FileManager.Save(_env.WebRootPath, "uploads/albums", album.PosterFile)
-            };
-            album.AlbumImages.Add(posterImage);
-
             _context.Albums.Add(album);
             _context.SaveChanges();
 
@@ -103,13 +102,12 @@ namespace Final.Areas.manage.Controllers
         }
         public IActionResult Edit(int id)
         {
-            Album albums = _context.Albums.Include(x => x.Singer).Include(x => x.Genres).Include(x => x.Tracks).Include(x => x.AlbumImages).FirstOrDefault(x => x.Id == id);
+            Album albums = _context.Albums.Include(x => x.Singer).Include(x => x.Genres).Include(x => x.AlbumTracks).FirstOrDefault(x => x.Id == id);
 
             if (albums is null) return View("_ErrorPartialView");
 
             ViewBag.Genres = _context.Genres.ToList();
-            ViewBag.Brands = _context.Singers.Where(x => !x.IsDeleted).ToList();
-            ViewBag.Types = _context.Tracks.ToList();
+            ViewBag.Singers = _context.Singers.Where(x => !x.IsDeleted).ToList();
 
 
             return View(albums);
@@ -118,8 +116,8 @@ namespace Final.Areas.manage.Controllers
         [HttpPost]
         public IActionResult Edit(Album album)
         {
-            Album existalbum = _context.Albums.Include(x => x.Singer).Include(x => x.Genres).Include(x => x.Tracks).Include(x => x.AlbumImages).FirstOrDefault(x => x.Id == album.Id);
-
+            Album existalbum = _context.Albums.Include(x => x.Singer).Include(x => x.Genres).Include(x => x.AlbumTracks).FirstOrDefault(x => x.Id == album.Id);
+                
             if (existalbum == null)
                 return NotFound();
 
@@ -135,43 +133,11 @@ namespace Final.Areas.manage.Controllers
             }
 
 
-            if (album.PosterFile != null && album.PosterFile.ContentType != "image/jpeg" && album.PosterFile.ContentType != "image/png")
-            {
-                ModelState.AddModelError("PosterFile", "file type must be image/jpeg or image/png");
-                return View();
-            }
 
-            if (album.PosterFile != null && album.PosterFile.Length > 2097152)
-            {
-                ModelState.AddModelError("PosterFile", "file size must be less than 2mb");
-                return View();
-            }
-
-            AlbumImage poster = existalbum.AlbumImages.FirstOrDefault(x => x.AlbumStatus == true);
-
-            if (album.PosterFile != null)
-            {
-                string newPoster = FileManager.Save(_env.WebRootPath, "uploads/albums", album.PosterFile);
-                if (poster != null)
-                {
-                    FileManager.Delete(_env.WebRootPath, "uploads/books", existalbum.AlbumImages.FirstOrDefault(x => x.AlbumStatus == true).Image);
-                    poster.Image = newPoster;
-                }
-                else
-                {
-                    poster = new AlbumImage { Image = newPoster, AlbumStatus = true };
-                    existalbum.AlbumImages.Add(poster);
-
-                }
-
-            }
-
-
-            existalbum.AlbumImages.RemoveAll(x => x.AlbumStatus == null);
-
+            existalbum.Image = album.Image;
             existalbum.SingerId = album.SingerId;
             existalbum.GenreId = album.GenreId;
-            existalbum.Tracks = album.Tracks;
+            existalbum.AlbumTracks = album.AlbumTracks;
             existalbum.Name = album.Name;
             existalbum.ModifiedAt = DateTime.UtcNow.AddHours(4);
 

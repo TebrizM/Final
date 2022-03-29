@@ -12,6 +12,6 @@ namespace Final.Models
         [StringLength(maximumLength: 50)]
         public string Name { get; set; }
 
-        public List<Track> Tracks { get; set; }
+        public List<AlbumTrack> Tracks { get; set; }
     }
 }
