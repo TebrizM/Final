@@ -118,7 +118,12 @@ namespace Final.Migrations
                     b.Property<string>("Quote")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TagsId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TagsId");
 
                     b.ToTable("Blogs");
                 });
@@ -165,12 +170,14 @@ namespace Final.Migrations
                     b.Property<int>("BlogId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TagsId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BlogId");
+
+                    b.HasIndex("TagsId");
 
                     b.ToTable("BlogTags");
                 });
@@ -373,6 +380,30 @@ namespace Final.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("Final.Models.Tags", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Final.Models.Tours", b =>
@@ -667,6 +698,13 @@ namespace Final.Migrations
                         .HasForeignKey("SingerId");
                 });
 
+            modelBuilder.Entity("Final.Models.Blog", b =>
+                {
+                    b.HasOne("Final.Models.Tags", null)
+                        .WithMany("Blogs")
+                        .HasForeignKey("TagsId");
+                });
+
             modelBuilder.Entity("Final.Models.BlogComment", b =>
                 {
                     b.HasOne("Final.Models.AppUser", "AppUser")
@@ -683,8 +721,14 @@ namespace Final.Migrations
             modelBuilder.Entity("Final.Models.BlogTags", b =>
                 {
                     b.HasOne("Final.Models.Blog", "Blog")
-                        .WithMany("BlogTag")
+                        .WithMany("BlogTags")
                         .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Final.Models.Tags", "Tags")
+                        .WithMany()
+                        .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

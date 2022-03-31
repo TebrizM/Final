@@ -483,3 +483,15 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Order\Edit.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Album\Index.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Album\Create.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Blog\Create.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Blog\Index.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tours\Index.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tours\Create.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tours\Edit.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tours\Delete.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Genre\Index.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Genre\Create.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Genre\Edit.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Blog\Edit.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tags\Index.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tags\Create.cshtml.g.cs

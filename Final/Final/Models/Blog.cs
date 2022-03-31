@@ -16,7 +16,10 @@ namespace Final.Models
         [NotMapped]
         public IFormFile BlogImage { get; set; }
         public List<BlogComment> BlogComments { get; set; }
-        public List<BlogTags> BlogTag { get; set; }
+        public List<BlogTags> BlogTags { get; set; }
+ 
+        [NotMapped]
+        public List<int> TagIds { get; set; }
 
     }
 }

@@ -41,7 +41,7 @@ namespace Final.Areas.manage.Controllers
         {
             ViewBag.Genres = _context.Genres.ToList();
             ViewBag.Singers = _context.Singers.Where(x => !x.IsDeleted).ToList();
-            ~
+
        
 
             return View();
