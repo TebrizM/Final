@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+
+@inject UserManager<AppUser> userManager;
+@{ 
+
+    AppUser member = null;
+
+    if (User.Identity.IsAuthenticated)
+        member = userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin);
+
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -51,15 +62,21 @@
                 <li>
                     <a href="myPlaylist.html">My Playlist</a>
                 </li>
-                <div class="user">
-                    <img src="./assets/media/userPhotos/71331428_2525995110821251_1870810324467187712_n.jpg" alt="user"
-                         title="test">
-                </div>
-                <li>
-                    <a href="./login.html"><i class="bi bi-box-arrow-in-right"></i></a>
-                </li>
+                @if (member != null)
+                {
+                    <li><a asp-action="profile" asp-controller="account">@member.UserName</a></li>
+                    <li><a asp-action="logout" asp-controller="account"><i class="bi bi-door-open"></i></a></li>
+
+                }
+                else
+                {
+                    <li><a asp-action="login" asp-controller="account"><i class="bi bi-box-arrow-in-right"></i></a></li>
+                    <li>
+                        <a asp-controller="account" asp-action="register"><i class="bi bi-person-circle"></i></a>
+                    </li>
 
 
+                }
             </ul>
 
             <label for="nav-toggle" class="icon-burger">
@@ -74,7 +91,7 @@
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
-       @RenderBody();
+        @RenderBody();
     </main>
     <footer style="background-image: url(../assets/media/main/footer.png);">
         <div class="container">
@@ -84,7 +101,7 @@
                         <div class="sub-title">
                             <p>Contact Us</p>
                             <h2>GOT A QUESTION?</h2>
-                        </div>      
+                        </div>
                         <form action="">
                             <div class="row">
                                 <div class="col-12 col-lg-6">

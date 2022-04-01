@@ -495,3 +495,7 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Blog\Edit.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tags\Index.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tags\Create.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tags\Edit.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs

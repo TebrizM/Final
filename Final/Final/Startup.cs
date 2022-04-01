@@ -1,8 +1,10 @@
 using Final.Models;
 using Final.Services;
+using Final.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,18 +40,18 @@ namespace Final
 
             services.AddHttpContextAccessor();
 
-            //Constants.EmailAdress = Configuration["Gmail:MailAddress"];
-            //Constants.Password = Configuration["Gmail:Password"];
+            Constants.EmailAdress = Configuration["Gmail:MailAddress"];
+            Constants.Password = Configuration["Gmail:Password"];
 
-            //services.AddIdentity<AppUser, IdentityRole>(c =>
-            //{
-            //    c.Password.RequireDigit = true;
-            //    c.Password.RequiredLength = 8;
-            //    c.Password.RequireUppercase = true;
-            //    c.Password.RequireNonAlphanumeric = false;
-            //    c.User.RequireUniqueEmail = true;
+            services.AddIdentity<AppUser, IdentityRole>(c =>
+            {
+                c.Password.RequireDigit = true;
+                c.Password.RequiredLength = 8;
+                c.Password.RequireUppercase = true;
+                c.Password.RequireNonAlphanumeric = false;
+                c.User.RequireUniqueEmail = true;
 
-            //}).AddDefaultTokenProviders().AddEntityFrameworkStores<JuanContext>();
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<HnBandContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

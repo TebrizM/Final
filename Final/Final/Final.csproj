@@ -20,6 +20,7 @@
     <Folder Include="Areas\manage\ViewModels\" />
     <Folder Include="wwwroot\uploads\albums\" />
     <Folder Include="wwwroot\uploads\blogs\" />
+    <Folder Include="wwwroot\uploads\accounts\" />
   </ItemGroup>
 
 </Project>

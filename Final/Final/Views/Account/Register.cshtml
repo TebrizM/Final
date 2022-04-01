@@ -1,0 +1,58 @@
+﻿@model MemberRegisterViewModel
+@{
+
+    Layout = null;
+    <link rel="stylesheet" href="~/assets/sass/css/main.css" />
+}
+
+
+<main>
+    <section id="login">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-12 login-col">
+                    <div class="login-card">
+                        <i class="bi bi-arrow-left go-back"></i>
+                        <form asp-action="register" method="post" enctype="multipart/form-data">
+                            <h2>Register</h2>
+                            <div class="login-form">
+                                <input asp-for="FullName" type="text" id="name" placeholder="Your Name">
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="login-form">
+                                <input asp-for="UserName" type="text" id="name" placeholder="Username">
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div class="login-form">
+                                <input asp-for="Email" type="email"  id="name" placeholder="E-Mail">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            @*<div class="login-form">
+                                <input asp-for="Image" type="file" class="login-image">
+                                <span asp-validation-for="Image" class="text-danger"></span>
+
+                            </div>*@
+                            <div class="login-form">
+                                <input asp-for="Password" type="password" placeholder="Enter your Password" required />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="login-form">
+                                <input asp-for="ConfirmPassword" type="password" placeholder="Repeat your Password" required />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                            <input type="checkbox">
+                            <label for=""><p>Remmember Me</p></label>
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>  
+                            <div class="login-form">
+                                <input type="submit" value="Sign Up" class="submit-btn">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

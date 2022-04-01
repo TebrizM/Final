@@ -1,0 +1,45 @@
+﻿@model MemberLoginViewModel
+
+@{
+
+    Layout = null;
+    <link rel="stylesheet" href="~/assets/sass/css/main.css" />
+}
+<main>
+    <section id="login">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-12 login-col">
+                    <div class="login-card">
+                        <form asp-action="login">
+                            <h2>Login</h2>
+                            <div class="login-form">
+                                <input asp-for="UserName" type="text" placeholder="Username" required />
+
+                            </div>
+                            <div class="login-form">
+                                <input asp-for="Password" type="password" placeholder="Enter your Password" required />
+                            </div>
+                            <div class="login-btns">
+                                <input type="checkbox" id="rememberMe">
+                                <label asp-for="IsPersistent" for="rememberMe"><p>Remmember Me</p></label>
+
+                                <a asp-action="ForgotPassword" asp-controller="account">Forgot Password?</a>
+                            </div>
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                            <div class="login-form">
+                                <input type="submit" value="Login" class="submit-btn">
+                            </div>
+                            <p class="register-info">Don't have an account? <a asp-action="register" asp-controller="account">Sign Up Here</a></p>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

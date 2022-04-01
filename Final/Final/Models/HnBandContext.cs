@@ -18,6 +18,7 @@ namespace Final.Models
         public DbSet<BlogComment> BlogComments { get; set; }
         public DbSet<BlogTags> BlogTags { get; set; }
         public DbSet<Tags> Tags { get; set; }
+        public DbSet<Track> Tracks { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Singer> Singers { get; set; }

@@ -38,14 +38,14 @@
                     @foreach (var item in Model)
                     {
                         counter++;
-                        <tr>
-                            <th scope="row">@counter</th>
-                            <td>@item.Name</td>
-                            <td>
-                                <a asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                                <a asp-action="@(item.IsDeleted?"restore":"delete")" asp-route-id="@item.Id" class="btn btn-@(item.IsDeleted?"info":"danger")">@(item.IsDeleted?"Restore":"Delete")</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <th scope="row">@counter</th>
+                        <td>@item.Name</td>
+                        <td>
+                            <a asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                            <a asp-action="@(item.IsDeleted?"restore":"delete")" asp-route-id="@item.Id" class="btn btn-@(item.IsDeleted?"info":"danger")">@(item.IsDeleted?"Restore":"Delete")</a>
+                        </td>
+                    </tr>
                     }
 
                 </tbody>
