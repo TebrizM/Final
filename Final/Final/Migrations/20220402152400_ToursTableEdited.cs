@@ -2,21 +2,21 @@
 
 namespace Final.Migrations
 {
-    public partial class AppUserTableEdited : Migration
+    public partial class ToursTableEdited : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Image",
-                table: "AspNetUsers",
+                name: "Desc",
+                table: "Tours",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Image",
-                table: "AspNetUsers");
+                name: "Desc",
+                table: "Tours");
         }
     }
 }

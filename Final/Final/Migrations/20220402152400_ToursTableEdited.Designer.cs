@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final.Migrations
 {
     [DbContext(typeof(HnBandContext))]
-    [Migration("20220401050514_TracksAdded")]
-    partial class TracksAdded
+    [Migration("20220402152400_ToursTableEdited")]
+    partial class ToursTableEdited
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -89,7 +89,7 @@ namespace Final.Migrations
 
                     b.HasIndex("SingerId");
 
-                    b.ToTable("AlbumTrack");
+                    b.ToTable("Tracks");
                 });
 
             modelBuilder.Entity("Final.Models.Blog", b =>
@@ -424,6 +424,9 @@ namespace Final.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("DiscountPercent")
                         .HasColumnType("decimal(18,2)");
 
@@ -442,36 +445,6 @@ namespace Final.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tours");
-                });
-
-            modelBuilder.Entity("Final.Models.Track", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AlbumId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AlbumId");
-
-                    b.ToTable("Tracks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -692,6 +665,9 @@ namespace Final.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
 
@@ -783,15 +759,6 @@ namespace Final.Migrations
                     b.HasOne("Final.Models.Tours", "Tours")
                         .WithMany()
                         .HasForeignKey("ToursId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Final.Models.Track", b =>
-                {
-                    b.HasOne("Final.Models.Album", "Album")
-                        .WithMany()
-                        .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

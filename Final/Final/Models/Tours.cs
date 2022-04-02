@@ -11,6 +11,7 @@ namespace Final.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public string Info { get; set; }
+        public string Desc { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal SalePrice { get; set; }
         [Column(TypeName = "decimal(18,2)")]

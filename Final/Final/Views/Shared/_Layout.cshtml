@@ -1,7 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity;
+@using Final.Services;
 
+@inject LayoutService layoutService
 @inject UserManager<AppUser> userManager;
-@{ 
+@{
+    var settings = layoutService.GetSettings();
 
     AppUser member = null;
 
@@ -44,23 +47,23 @@
         <nav class="nav top">
             <input type="checkbox" id="nav-toggle">
             <div class="logo">
-                <h3>HN<span>Band</span></h3>
+                <a style="text-decoration:none; color:pink;" asp-action="index" asp-controller="home">HN<span style="color: white;">Band</span></a>
             </div>
             <ul class="nav-links">
                 <li>
-                    <a class="active-nav-btn" href="">Home</a>
+                    <a class="active-nav-btn" asp-action="index" asp-controller="home">Home</a>
                 </li>
                 <li>
-                    <a href="albums.html">Albums</a>
+                    <a asp-action="index" asp-controller="albums">Albums</a>
                 </li>
                 <li>
-                    <a href="tours.html">Tours</a>
+                    <a asp-action="index" asp-controller="tours">Tours</a>
                 </li>
                 <li>
-                    <a href="blog.html">Blog</a>
+                    <a asp-action="index" asp-controller="blog">Blog</a>
                 </li>
                 <li>
-                    <a href="myPlaylist.html">My Playlist</a>
+                    <a asp-action="index" asp-controller="myPlaylist">My Playlist</a>
                 </li>
                 @if (member != null)
                 {
@@ -123,29 +126,28 @@
                 </div>
                 <div class="col-12 col-lg-4">
                     <div class="footer-img">
-                        <img src="~/assets/media/main/footers.webp" alt="">
+                        <img src="~/assets/media/main/@settings["footerImg"]" alt="">
                     </div>
                 </div>
             </div>
             <div class="row location-section">
                 <div class="col-12 col-lg-4 col-md-6">
                     <div class="footer-icon">
-                        <i class="bi bi-geo-alt-fill"></i>
+                        <i class="bi  @settings["footerIcon"]"></i>
                     </div>
                     <div class="footer-adress">
                         <p>
-                            333 Middle Winchendon Rd,Rindge,<br> NH 03461
+                            @settings["footerAdress"]
                         </p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-md-6">
                     <div class="footer-icon">
-                        <i class="bi bi-geo-alt-fill"></i>
+                        <i class="bi @settings["footerIcon"]"></i>
                     </div>
                     <div class="footer-adress">
                         <p>
-                            125-711-811 | 125-668-886 <br>
-                            Support.music@gmail.com
+                            @settings["footerContact"]
                         </p>
                     </div>
                 </div>

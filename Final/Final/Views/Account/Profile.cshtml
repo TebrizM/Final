@@ -1,10 +1,11 @@
-﻿
+﻿@model MemberProfileViewModel
 @{
     ViewData["Title"] = "Profile";
+ 
 }
 
 <main>
-    <section id="myProfile">
+    <section style="margin-bottom: 200px;" id="myProfile">
         <div class="container">
             <div class="row breadcrumb-row">
                 <div class="col-12 col-lg-12">
@@ -16,7 +17,7 @@
                             <h1>Account Details</h1>
                         </div>
                         <div class="br-subtitle acc-br">
-                            <a href="index.html">Home > <span>Account Details</span></a>
+                            <a asp-action="index" asp-controller="home">Home > <span>Account Details</span></a>
                         </div>
                     </div>
                 </div>
@@ -29,7 +30,7 @@
                             @Html.Partial("_MemberUpdateForm", Model.Member)
                         </div>
                     </div>
-               </div>
+                </div>
             </div>
         </div>
 

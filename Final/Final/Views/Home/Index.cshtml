@@ -1,36 +1,22 @@
-﻿
+﻿@model HomeViewModel
 
     <section class="homeHero">
         <div class="container">
             <div class="slider">
                 <ul class="one-time">
-                    <li>
-                        <h4 class="slider-headtext">The Electro Vibe</h4>
-                        <h1 class="slider-name">Tailor Lachiri</h1>
-                        <p class="slider-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua accumsan lacus vel facilisis.
-                        </p>
-                        <button class="slider-btn">Buy Tickets</button>
-                    </li>
-                    <li>
-                        <h4 class="slider-headtext">The Electro Vibe</h4>
-                        <h1 class="slider-name">Tailor Lachiri</h1>
-                        <p class="slider-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua accumsan lacus vel facilisis.
-                        </p>
-                        <button class="slider-btn">Buy Tickets</button>
-                    </li>
-                    <li>
-                        <h4 class="slider-headtext">The Electro Vibe</h4>
-                        <h1 class="slider-name">Tailor Lachiri</h1>
-                        <p class="slider-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua accumsan lacus vel facilisis.
-                        </p>
-                        <button class="slider-btn">Buy Tickets</button>
-                    </li>
+                    @foreach (var item in Model.Sliders)
+                    {
+                        <li>
+                            <h4 class="slider-headtext">@item.Title1</h4>
+                            <h1 class="slider-name">@item.Title2</h1>
+                            <p class="slider-content">
+                                @item.Desc
+                            </p>
+                            <button class="slider-btn">@item.BtnText</button>
+                        </li>
+                    }
+
+
                 </ul>
                 <div class="navigation d-flex justify-content-between">
                     <div class="prev-arrow"><i class="text-white fa-solid fa-angle-left"></i></div>
@@ -46,21 +32,18 @@
             <div class="row  align-items-center">
                 <div class="col-12 col-lg-6">
                     <div class="">
-                        <img class="" src=" ./assets/media/about-section/about1.webp" alt="">
+                        <img class="" src=" ./assets/media/about-section/@Model.Settings["AboutImg"]" alt="">
 
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="about-text">
-                        <span> About Us</span>
-                        <h2>The Electro Vibe</h2>
+                        <span>@Model.Settings["AboutTitle1"]</span>
+                        <h2>@Model.Settings["AboutTitle2"]</h2>
                         <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum aperiam, eum natus eos asperiores
-                            necessitatibus esse? Eos, tenetur voluptatum ipsa laboriosam quam a debitis? Quas dolor, assumenda
-                            distinctio nihil magni maiores nisi quibusdam magnam accusantium rem, suscipit ipsam nulla soluta sit
-                            doloribus sequi officia! Consequatur, dolore! Provident dignissimos reiciendis quidem.
+                            @Model.Settings["AboutDesc"]
                         </p>
-                        <a href="">Contact Us</a>
+                        <a href="">@Model.Settings["AboutBtn"]</a>
                     </div>
                 </div>
             </div>
@@ -74,12 +57,10 @@
                 <div class="col-12 col-lg-6 album-title">
                     <span>
                         Discover
-
                     </span>
                 </div>
                 <div class="col-12 col-lg-6 text-end album-button">
                     <a>
-
                         View My Playlist
                     </a>
                 </div>
@@ -384,7 +365,7 @@
         <div class="container">
             <div class="row">
                 <video autoplay loop muted plays-inline>
-                    <source src="~/assets/media/videoSection/Gojira - Born In Winter [OFFICIAL VIDEO].mp4">
+                    <source src="~/assets/media/videoSection/@Model.Settings["VideoSection"]">
                 </video>
             </div>
         </div>
