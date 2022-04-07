@@ -1,0 +1,79 @@
+﻿@model AlbumViewModel
+
+@{ 
+    <style>
+
+        .album-page-title-inner {
+            display: flex;
+            flex-direction: column;
+          
+        }
+        .singer-name {
+            color: white;
+            text-decoration: none;
+            font-size:30px;
+        }
+    </style>
+}
+<main>
+    <section id="albumList">
+        <div class="container">
+            <div class="row breadcrumb-row">
+                <div class="col-12 col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="br-icon">
+                            <i class="bi bi-headphones"></i>
+                        </div>
+                        <div class="br-title">
+                            <h1>Albums</h1>
+                        </div>
+                        <div style="right: 133px;" class="br-subtitle">
+                            <a asp-action="index" asp-controller="home">Home > <span>Album</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="album-page-header">
+                    <h2>DISCOVER OUR NEWEST MUSICALBUMS AND SINGLES</h2>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.Albums)
+                {
+                    <div class="col-12 col-lg-4 col-md-6">
+                        <div class="album-page-card">
+                            <div class="album-pics">
+                                <img src="~/uploads/albums/@item.Image" alt="">
+
+                                <div class="album-page-title">
+                                    <div class="album-page-title-inner">
+                                        <a class="singer-name" asp-controller="album" asp-action="detail" asp-route-id="@item.Id">@item.Singer.Name</a>
+                                        <a>@item.Name</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="site-pagination">
+                        <a href="">Back</a>
+                        <a class="active-pagination" href="">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">Next</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</main>

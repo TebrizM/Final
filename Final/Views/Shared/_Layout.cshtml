@@ -1,0 +1,175 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Final.Services;
+
+@inject LayoutService layoutService
+@inject UserManager<AppUser> userManager;
+@{
+    var settings = layoutService.GetSettings();
+
+    AppUser member = null;
+
+    if (User.Identity.IsAuthenticated)
+        member = userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin);
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+          integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/assets/sass/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Satisfy&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+</head>
+
+<body style="background-color: #0c0617">
+
+    <header>
+        <nav class="nav top">
+            <input type="checkbox" id="nav-toggle">
+            <div class="logo">
+                <a style="text-decoration:none; color:pink;" asp-action="index" asp-controller="home">HN<span style="color: white;">Band</span></a>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a class="active-nav-btn" asp-action="index" asp-controller="home">Home</a>
+                </li>
+                <li>
+                    <a asp-action="index" asp-controller="album">Albums</a>
+                </li>
+                <li>
+                    <a asp-action="index" asp-controller="tours">Tours</a>
+                </li>
+                <li>
+                    <a asp-action="index" asp-controller="blog">Blog</a>
+                </li>
+                <li>
+                    <a asp-action="index" asp-controller="myPlaylist">My Playlist</a>
+                </li>
+                @if (member != null)
+                {
+                    <li><a asp-action="profile" asp-controller="account">@member.UserName</a></li>
+                    <li><a asp-action="logout" asp-controller="account"><i class="bi bi-door-open"></i></a></li>
+
+                }
+                else
+                {
+                    <li><a asp-action="login" asp-controller="account"><i class="bi bi-box-arrow-in-right"></i></a></li>
+                    <li>
+                        <a asp-controller="account" asp-action="register"><i class="bi bi-person-circle"></i></a>
+                    </li>
+
+
+                }
+            </ul>
+
+            <label for="nav-toggle" class="icon-burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </label>
+
+        </nav>
+    </header>
+    <main>
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        @RenderBody();
+    </main>
+    <footer style="background-image: url(../assets/media/main/footer.png);">
+        <div class="container">
+            <div class="row footer-row">
+                <div class="col-12 col-lg-8 footer-bg">
+                    <div class="footer-title">
+                        <div class="sub-title">
+                            <p>Contact Us</p>
+                            <h2>GOT A QUESTION?</h2>
+                        </div>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <input type="text" class="name-inp" placeholder="Name">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <input type="text" class="email-inp" placeholder="E-Mail">
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <textarea name="" placeholder="Message" id="" cols="30" rows="10"></textarea>
+                                    <button class="footer-btn">Contact Us</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="footer-img">
+                        <img src="~/assets/media/main/@settings["footerImg"]" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row location-section">
+                <div class="col-12 col-lg-4 col-md-6">
+                    <div class="footer-icon">
+                        <i class="bi  @settings["footerIcon"]"></i>
+                    </div>
+                    <div class="footer-adress">
+                        <p>
+                            @settings["footerAdress"]
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 col-md-6">
+                    <div class="footer-icon">
+                        <i class="bi @settings["footerIcon"]"></i>
+                    </div>
+                    <div class="footer-adress">
+                        <p>
+                            @settings["footerContact"]
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="socials">
+                        <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="~/assets/Js/main.js"></script>
+</body>
+
+</html>

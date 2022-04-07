@@ -1,0 +1,84 @@
+﻿@model ToursViewModel
+
+<main>
+    <section id="tour">
+        <div class="container">
+            <div class="row breadcrumb-row">
+                <div class="col-12 col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="br-icon">
+                            <i class="bi bi-headphones"></i>
+                        </div>
+                        <div class="br-title">
+                            <h1>
+                                Tours
+                            </h1>
+
+                        </div>
+                        <div class="br-subtitle">
+                            <a asp-action="index" asp-controller="home">Home > <span>Tours</span></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="tours-title">
+                        <div class="sub-title">
+                            <p>Upcoming Shows</p>
+                        </div>
+                        <h2>WHEN WE ALL FALL ASLEEP</h2>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="tours-list">
+                        <ul>
+                            @foreach (var item in Model.Tours)
+                            {
+                                <li>
+                                    <div class="tour-date">
+                                        <h2>@item.Date.ToString("dd")</h2>
+                                        <span>@item.Date.ToString("MMM")</span>
+                                    </div>
+                                    <div class="tour-info">
+                                        <p>
+
+                                           @item.Info
+                                        </p>
+                                        <span>
+
+                                           @item.Desc
+                                        </span>
+                                    </div>
+                                    <div class="tour-location">
+                                        <p>
+                                            <i class="bi bi-geo-alt-fill"></i>
+                                           @item.Location
+
+                                        </p>
+                                    </div>
+                                    <div class="tour-date">
+                                        <p>
+                                            <i class="bi bi-clock"></i>
+                                            @item.Date.ToString("hh:ff")
+
+                                        </p>
+                                    </div>
+                                    <div class="ticket-btn">
+                                        <a href="">@item.BtnText</a>
+                                    </div>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

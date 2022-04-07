@@ -1,0 +1,33 @@
+﻿@model AlbumTrack
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Create</h1>
+            <form asp-action="create" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="TackName">Title1</label>
+                    <input class="form-control" asp-for="TackName" placeholder="Enter Title1">
+                    <span class="text-danger" asp-validation-for="TackName"></span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        <label asp-for="TrackSource">ImageFile</label>
+                        <input class="form-control" asp-for="TrackSource" placeholder="Enter File">
+                        <span class="text-danger" asp-validation-for="TrackSource"></span>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label asp-for="AlbumId">Genre</label>
+                        <select class="form-control" asp-for="AlbumId" asp-items="@new SelectList(ViewBag.Albums,nameof(Album.Id),nameof(Album.Name))">
+                        </select>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

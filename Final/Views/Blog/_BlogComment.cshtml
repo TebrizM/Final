@@ -1,0 +1,13 @@
+﻿@model BlogComment
+
+
+<form id="comment-form" class="comment-form" asp-action="comment" asp-controller="blog" method="post" class="review-form">
+    <input type="hidden" value="@Model.BlogId" name="blogId" />
+    <div class="row">
+        
+        <div class="col-12 col-lg-12">
+            <textarea name="" asp-for="Text" class="form-control" required placeholder="Comment" id="" cols="30" rows="10"></textarea>
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</form> <!-- end of review-form -->

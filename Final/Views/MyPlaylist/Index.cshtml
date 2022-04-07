@@ -1,0 +1,142 @@
+﻿@model MyPlaylistViewModel
+
+@{
+                int counter = 0;
+    <style>
+        .sidebar-artist {
+            padding-bottom: 208px;
+        }
+
+        footer {
+            display: none;
+        }
+
+        #stars {
+            display: none;
+        }
+
+        #stars2 {
+            display: none;
+        }
+
+        #stars3 {
+            display: none;
+        }
+
+        .master_play {
+            position: relative;
+            top: 180px;
+        }
+
+    
+
+   </style>
+}
+    <main>
+        <section id="myPlaylist">
+            <div class="container-fluid playlist-cont">
+                <div class="row genre-row">
+                    <div class="col-12 col-lg-2 sidebar-col">
+                        <div class="sidebar-header">
+                            <h2>Genres</h2>
+
+                        </div>
+                        <div class="sidebar-main">
+                            <ul>
+                                @foreach (var item in Model.Genres)
+                                {
+                                <li><a style="color:@(ViewBag.GenreId==item.Id?"#62ab00":"")" asp-action="index" asp-route-genreId="@item.Id">@item.Name (@item.Albums.Count)</a></li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2 sidebar-col sidebar-artist">
+                        <div class="sidebar-header-artist">
+                            <h2>Artists</h2>
+
+                        </div>
+                        <div class="sidebar-main-artist">
+                            <ul>
+                                @foreach (var item in Model.Singers)
+                                {
+                                    <li><a style="color:@(ViewBag.SingerId==item.Id?"#62ab00":"")" asp-action="index" asp-route-genreId="@item.Id">@item.Name (@item.Albums.Count)</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row list-row">
+                    <div class="col-12 col-lg-10">
+                        <div class="list-header">
+                            <h1>My Playlist</h1>
+                        </div>
+                        <div class="menu_song">
+                            <ul>
+                                @foreach (var item in Model.AlbumTracks)
+                                {
+                                    counter++;
+                                <li class="songItem">
+                                    <span>@counter</span>
+                                    <img src="./assets/media/albums/1.jpg.webp" alt="">
+                                    <h5>
+                                        @item.TackName
+
+                                        <div class="subtitle">@item.Album.Singer.Name</div>
+                                    </h5>
+                                    <i class="bi playListPlay bi-play-circle-fill" id="@item.Id"></i>
+                                </li>
+	}
+                                
+                        
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid music-container">
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="master_play">
+                            <div class="wave">
+                                <div class="wave1"></div>
+                                <div class="wave1"></div>
+                                <div class="wave1"></div>
+
+                            </div>
+
+                            <img id="track-img" src="./assets/media/albums/5.jpg.webp" alt="">
+
+
+                            <h5 id="titles">
+                                On My Way <br>
+
+
+                            </h5>
+                            <div class="icon">
+                                <i class="bi bi-skip-start-fill" id="back"></i>
+                                <i class="bi bi-play-fill" id="masterPlay"></i>
+                                <i class="bi bi-skip-end-fill" id="next"></i>
+                            </div>
+                            <span id="currentStart">0:00</span>
+                            <div class="bar">
+                                <input type="range" id="seek" min="0" value="0" max="100">
+                                <div class="bar2" id="bar2"></div>
+
+                            </div>
+                            <span id="currentEnd">0:00</span>
+
+                            <div class="vol">
+                                <i class="bi bi-volume-up-fill" id="vol-Icon"></i>
+                                <input type="range" id="vol" min="0" value="30" max="100">
+                                <div class="vol_bar"></div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>

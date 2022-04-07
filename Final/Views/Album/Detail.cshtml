@@ -1,0 +1,69 @@
+﻿@model AlbumDetailViewModel
+
+@{ 
+    int counter = 0;
+
+ 
+}
+<main>
+    <section id="albumDetail">
+        <div class="container">
+            <div class="row breadcrumb-row">
+                <div class="col-12 col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="br-icon">
+                            <i class="bi bi-headphones"></i>
+                        </div>
+                        <div class="br-title">
+                            <h1>Album's Details</h1>
+                        </div>
+                        <div style="right: 284px;" class="br-subtitle">
+                            <a asp-action="index" asp-controller="home">Home > <span>Album Detail</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="albums-img">
+                        <img src="~/uploads/albums/@Model.Albums.Image" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="albums-about">
+                        <h2>@Model.Albums.Name</h2> <br>
+                        <p>
+                            @Model.Albums.Desc
+                        </p>
+                    </div>
+                    <div class="albums-information">
+                        <h5>Release Date: <span>@Model.Albums.CreatedAt.ToString("yyyy")</span></h5>
+                        <h5>@Model.Albums.AlbumTracks.Count-Tracks</h5>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="menu_song">
+                        <ul>
+                            @foreach (var item in Model.Tracks)
+                            {
+                              
+                                <li class="songItem">
+                                    <h5>
+                                        @item.TackName
+                                    </h5>
+                                    <i class="bi playListPlay bi-play-circle-fill" id="@item.Id"></i>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

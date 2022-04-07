@@ -1,0 +1,75 @@
+﻿@model BlogViewModel
+
+
+
+<main>
+    <section id="Posts">
+        <div class="container">
+            <div class="row breadcrumb-row">
+                <div class="col-12 col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="br-icon">
+                            <i class="bi bi-headphones"></i>
+                        </div>
+                        <div class="br-title">
+                            <h1>Blog</h1>
+                        </div>
+                        <div class="br-subtitle">
+                            <a asp-action="index" asp-controller="home">Home > <span>Blog</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="blog-tags">
+                        <ul class="blog-tag-list" style="display: flex; justify-content: space-between; margin-bottom: 25px;">
+                            <li>
+                                <a style="background-color: white; color: black;" href=""> All </a>
+                            </li>
+                            <li>
+                                <a href=""> Body Building </a>
+                            </li>
+                            <li>
+                                <a href=""> Yoga </a>
+                            </li>
+                            <li>
+                                <a href=""> Swimming </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.Blogs)
+                {
+                    <div class="col-12 col-lg-4">
+                        <div class="blogs">
+                            <div class="blog-img">
+                                <img src="./uploads/blogs/@item.Image" alt="">
+                            </div>
+                            <div class="blog-metas">
+                                <p>by <span>Admin</span></p>|
+                                <p>@item.CreatedAt.ToString("d MMMM, yyy")</p>|
+                                <p>20 Comment</p>
+                            </div>
+                            <div class="blog-header">
+                                <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@item.Name</a>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="loadmore-btn">
+                        <button>Load More Posts</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>

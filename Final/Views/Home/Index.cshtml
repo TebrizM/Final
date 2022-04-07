@@ -1,0 +1,355 @@
+﻿@model HomeViewModel
+
+    <section class="homeHero">
+        <div class="container">
+            <div class="slider">
+                <ul class="one-time">
+                    @foreach (var item in Model.Sliders)
+                    {
+                        <li>
+                            <h4 class="slider-headtext">@item.Title1</h4>
+                            <h1 class="slider-name">@item.Title2</h1>
+                            <p class="slider-content">
+                                @item.Desc
+                            </p>
+                            <button class="slider-btn">@item.BtnText</button>
+                        </li>
+                    }
+
+
+                </ul>
+                <div class="navigation d-flex justify-content-between">
+                    <div class="prev-arrow"><i class="text-white fa-solid fa-angle-left"></i></div>
+                    <div class="next-arrow"><i class="text-white fa-solid fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+    <section class="homeAbout">
+
+        <div class="container">
+            <div class="row  align-items-center">
+                <div class="col-12 col-lg-6">
+                    <div class="">
+                        <img class="" src=" ./assets/media/about-section/@Model.Settings["AboutImg"]" alt="">
+
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="about-text">
+                        <span>@Model.Settings["AboutTitle1"]</span>
+                        <h2>@Model.Settings["AboutTitle2"]</h2>
+                        <p>
+                            @Model.Settings["AboutDesc"]
+                        </p>
+                        <a href="">@Model.Settings["AboutBtn"]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Albums Section -->
+    <section id="albums">
+        <div class="container album-cont">
+            <div class="row justify-content-between">
+                <div class="col-12 col-lg-6 album-title">
+                    <span>
+                        Discover
+                    </span>
+                </div>
+                <div class="col-12 col-lg-6 text-end album-button">
+                    <a>
+                        View My Playlist
+                    </a>
+                </div>
+            </div>
+            <div class="row my-5">
+                <h1>NEWEST ALBUMS & SINGLES</h1>
+            </div>
+            <div class="row my-5">
+                @foreach (var item in Model.Albums)
+                {
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="album-card text-center">
+                            <div class="album-image">
+                                <img src="~/uploads/albums/@item.Image" alt="">
+                            </div>
+                            <div class="album-title">
+                                @item.Name
+                            </div>
+                            <div class="album-singer">
+                               @item.Singer.Name
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Player Section -->
+    <section id="players">
+        <div class="container-fluid">
+            <div class="row m-0">
+                <div class="col-12 col-lg-6 p-0">
+                    <div class="player_left">
+                        <div class="player-left-inner">
+                            <div class="row">
+                                <div class="col-lg-5 col-sm-4">
+                                    <div class="track-info-left">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-sm-8 text-right">
+                                    <div class="controls">
+
+                                        <div class="track-btn prev-track">
+                                            <i class="fa-solid fa-backward" id="back"></i>
+                                        </div>
+                                        <div class="track-play-btn">
+                                            <i class="fa-solid fa-play" id="masterPlay"></i>
+                                        </div>
+                                        <div class="track-btn next-track">
+                                            <i class="fa-solid fa-forward" id="next"></i>
+                                        </div>
+                                        <div class="track-btn">
+                                            <i class="fa-solid fa-volume-high"></i>
+                                        </div>
+                                        <div class="track-timers">
+                                            <span class="current-time" id="currentStart">00:00</span>
+                                            /
+                                            <span class="total-time" id="currentEnd">03:06</span>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="track-progress">
+
+                                        <input class="progress" id="seek" type="range" min="1" max="100" value="0" 
+                                        >
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 p-0">
+                    <div class="player-right">
+                        <div class="section-title">
+                            <h4 class="sub-title">Latest Album</h4>
+                            <h2>WHEN WE ALL FALL ASLEEP</h2>
+                        </div>
+                        <div class="playlists">
+                            <ul>
+                                <li>
+                                    <div class="play-btn">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                    <div class="track-info">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+                                    <div class="add-btn">
+                                        <a href="">Add to Playlist</a>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="play-btn">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                    <div class="track-info">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                                    <div class="add-btn">
+                                        <a href="">Add to Playlist</a>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="play-btn">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                    <div class="track-info">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                                    <div class="add-btn">
+                                        <a href="">Add to Playlist</a>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="play-btn">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                    <div class="track-info">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                                    <div class="add-btn">
+                                        <a href="">Add to Playlist</a>
+
+                                    </div>
+                                </li>
+                                <li class="vip-member">
+                                    <div class="play-btn">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                    <div class="track-info">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                                    <div class="add-btn">
+                                        <a href="">Add to Playlist</a>
+
+                                    </div>
+                                </li>
+                                <li class="vip-member">
+                                    <div class="play-btn">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                    <div class="track-info">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                                    <div class="add-btn">
+                                        <a href="">Add to Playlist</a>
+
+                                    </div>
+                                </li>
+                                <li class="vip-member">
+                                    <div class="play-btn">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                    <div class="track-info">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                                    <div class="add-btn">
+                                        <a href="">Add to Playlist</a>
+
+                                    </div>
+                                </li>
+                                <li class="vip-member">
+                                    <div class="play-btn">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                    <div class="track-info">
+                                        <h4>I'm Mess</h4>
+                                        <p>Bebe Rexha</p>
+                                    </div>
+                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
+
+                                    <div class="add-btn">
+                                        <a href="">Add to Playlist</a>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" style="background-image: url(./assets/media/main/video-overlay.png.webp);">
+        <div class="container">
+            <div class="row">
+                <video autoplay loop muted plays-inline>
+                    <source src="~/assets/media/videoSection/@Model.Settings["VideoSection"]">
+                </video>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Tours Section -->
+
+    <section id="tours">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="tours-title">
+                        <div class="sub-title">
+                            <p>Upcoming Shows</p>
+                        </div>
+                        <h2>WHEN WE ALL FALL ASLEEP</h2>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="tour-btn">
+                        <button asp-action="index" asp-controller="tours">View ALL</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="tours-list">
+                        <ul>
+                            @foreach (var item in Model.Tours)
+                            {
+                                <li style="margin-top:0px;">
+                                    <div class="tour-date">
+                                        <h2>@item.Date.ToString("dd")</h2>
+                                        <span>@item.Date.ToString("MMM")</span>
+                                    </div>
+                                    <div class="tour-info">
+                                        <p>
+
+                                            @item.Info
+                                        </p>
+                                        <span>
+
+                                            @item.Desc
+                                        </span>
+                                    </div>
+                                    <div class="tour-location">
+                                        <p>
+                                            <i class="bi bi-geo-alt-fill"></i>
+                                            @item.Location
+
+                                        </p>
+                                    </div>
+                                    <div class="tour-date">
+                                        <p>
+                                            <i class="bi bi-clock"></i>
+                                            @item.Date.ToString("hh:ff")
+
+                                        </p>
+                                    </div>
+                                    <div class="ticket-btn">
+                                        <a href="">@item.BtnText</a>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
