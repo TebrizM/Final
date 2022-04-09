@@ -1,6 +1,6 @@
 #myProfile{
     background-color: #0c0617;
-    height: auto;
+    height: 1000px;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -71,7 +71,7 @@ legend{
 
   .buttons{
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     .logout-button{
         button{
@@ -91,4 +91,15 @@ legend{
         background: linear-gradient(45deg, #040113da, #ff121e7c 100%);
         }
     }
+  }
+
+  .table{
+      thead{
+          th{
+              color: #fff;
+          }
+      }
+      tbody{
+          color: #fff;
+      }
   }

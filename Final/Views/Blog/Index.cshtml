@@ -1,5 +1,8 @@
 ﻿@model BlogViewModel
 
+<style>
+ 
+</style>
 
 
 <main>
@@ -24,18 +27,13 @@
                 <div class="col-12 col-lg-4">
                     <div class="blog-tags">
                         <ul class="blog-tag-list" style="display: flex; justify-content: space-between; margin-bottom: 25px;">
-                            <li>
-                                <a style="background-color: white; color: black;" href=""> All </a>
-                            </li>
-                            <li>
-                                <a href=""> Body Building </a>
-                            </li>
-                            <li>
-                                <a href=""> Yoga </a>
-                            </li>
-                            <li>
-                                <a href=""> Swimming </a>
-                            </li>
+
+                            @foreach (var item in Model.Tags)
+                            {
+                                <li>
+                                    <a style="background-color: @(ViewBag.TagId==item.Id?"white":""); color:@(ViewBag.TagId==item.Id?"black":"white");" asp-action="index" asp-route-TagId="@item.Id" ;> @item.Name </a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>

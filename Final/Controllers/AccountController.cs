@@ -30,6 +30,33 @@ namespace Final.Controllers
             _env = env;
 
         }
+
+        public async Task<IActionResult> Order()
+        {
+            AppUser member = await _userManager.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefaultAsync();
+
+            if (member == null)
+            {
+                return NotFound();
+            }
+
+            MemberProfileViewModel profileVM = new MemberProfileViewModel
+            {
+                Member = new MemberUpdateViewModel
+                {
+                    FullName = member.FullName,
+                    Address = member.Address,
+                    City = member.City,
+                    Country = member.Country,
+                    Email = member.Email,
+                    Phone = member.PhoneNumber,
+                    UserName = member.UserName
+                },
+                Orders = _context.Orders.Include(x => x.OrderItems).ThenInclude(x => x.Tours).Where(x => x.AppUserId == member.Id).ToList()
+            };
+
+            return View(profileVM);
+        }
         public IActionResult Register()
         {
             return View();
