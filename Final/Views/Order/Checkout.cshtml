@@ -1,0 +1,84 @@
+﻿@model CheckoutViewModel
+@{ 
+
+    
+}
+<style>
+    .checkout-row {
+        margin-bottom: 200px;
+        position: relative;
+        top: 167px;
+    }
+    .br-subtitle {
+        right: 153px !important;
+    }
+    footer {
+        top: 315px;
+        background-color: #0c061700;
+    }
+</style>
+
+<main>
+    <section id="checkoutPage">
+        <div class="container">
+            <div class="row breadcrumb-row">
+                <div class="col-12 col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="br-icon">
+                            <i class="bi bi-headphones"></i>
+                        </div>
+                        <div class="br-title">
+                            <h1>Checkout</h1>
+                        </div>
+                        <div class="br-subtitle">
+                            <a asp-action="index" asp-controller="home">Home > <span>Checkout</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row checkout-row">
+                <div class="col-12 col-lg-6">
+                    <div class="checkout-billing">
+                        <h3>Billing Address</h3>
+                        <div class="billing-form">
+                            @Html.Partial("_CheckoutFormPartial", Model.Order)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="checkout-summary">
+                        <h3>Your Order Summary</h3>
+                        <div class="summary">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Products</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Orders.OrderItems)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a asp-controller="product" asp-action="detail" asp-route-id="@item.Tours.Id">@item.Tours.Info <strong>@item.Count</strong></a>
+                                            </td>
+                                            <td>$@((item.Tours.DiscountPercent>0? (item.Tours.SalePrice*(1-item.Tours.DiscountPercent/100))*item.Count :item.Tours.SalePrice*item.Count).ToString("0.00"))</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>Total Amount</td>
+                                        <td><strong>$@Model.Orders.TotalPrice.ToString("0.00")</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <button type="submit" form="order-form" class="order-btn">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

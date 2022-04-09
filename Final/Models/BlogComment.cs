@@ -15,8 +15,6 @@ namespace Final.Models
 
         public AppUser AppUser { get; set; }
         public Blog Blog { get; set; }
-        [Range(1, 5)]
-        public byte Rate { get; set; }
         public DateTime CreatedAt { get; set; }
         [StringLength(maximumLength: 350)]
         public string Text { get; set; }

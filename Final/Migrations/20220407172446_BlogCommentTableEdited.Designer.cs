@@ -4,14 +4,16 @@ using Final.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Final.Migrations
 {
     [DbContext(typeof(HnBandContext))]
-    partial class HnBandContextModelSnapshot : ModelSnapshot
+    [Migration("20220407172446_BlogCommentTableEdited")]
+    partial class BlogCommentTableEdited
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -404,34 +406,6 @@ namespace Final.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Final.Models.TourOrderItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ToursId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.HasIndex("ToursId");
-
-                    b.ToTable("TourOrderItems");
-                });
-
             modelBuilder.Entity("Final.Models.Tours", b =>
                 {
                     b.Property<int>("Id")
@@ -772,19 +746,6 @@ namespace Final.Migrations
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Final.Models.Tours", "Tours")
-                        .WithMany()
-                        .HasForeignKey("ToursId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Final.Models.TourOrderItem", b =>
-                {
-                    b.HasOne("Final.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
 
                     b.HasOne("Final.Models.Tours", "Tours")
                         .WithMany()

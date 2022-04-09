@@ -1,5 +1,14 @@
 ﻿@model ToursViewModel
 
+<style>
+    .tour-desc{
+        font-size: 17px !important;
+    }
+    .adding-btn {
+        position: relative;
+        top: 20px;
+    }
+</style>
 <main>
     <section id="tour">
         <div class="container">
@@ -39,39 +48,40 @@
                         <ul>
                             @foreach (var item in Model.Tours)
                             {
-                                <li>
-                                    <div class="tour-date">
-                                        <h2>@item.Date.ToString("dd")</h2>
-                                        <span>@item.Date.ToString("MMM")</span>
-                                    </div>
-                                    <div class="tour-info">
-                                        <p>
+                            <li>
+                                <div class="tour-date">
+                                    <h2>@item.Date.ToString("dd")</h2>
+                                    <span>@item.Date.ToString("MMM")</span>
+                                </div>
+                                <div class="tour-info">
+                                    <p>
 
-                                           @item.Info
-                                        </p>
-                                        <span>
+                                        @item.Info
+                                    </p>
+                                    <span class="tour-desc">
 
-                                           @item.Desc
-                                        </span>
-                                    </div>
-                                    <div class="tour-location">
-                                        <p>
-                                            <i class="bi bi-geo-alt-fill"></i>
-                                           @item.Location
+                                        @item.Desc
+                                    </span>
+                                </div>
+                                <div class="tour-location">
+                                    <p>
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                        @item.Location
 
-                                        </p>
-                                    </div>
-                                    <div class="tour-date">
-                                        <p>
-                                            <i class="bi bi-clock"></i>
-                                            @item.Date.ToString("hh:ff")
+                                    </p>
+                                </div>
+                                <div class="tour-date">
+                                    <p>
+                                        <i class="bi bi-clock"></i>
+                                        @item.Date.ToString("hh:ff")
 
-                                        </p>
-                                    </div>
-                                    <div class="ticket-btn">
-                                        <a href="">@item.BtnText</a>
-                                    </div>
-                                </li>
+                                    </p>
+                                </div>
+                                <a asp-action="AddOrder" asp-controller="tours" asp-route-id="@item.Id"><i class="bi bi-plus-circle-fill adding-btn"></i></a>
+                                <div class="ticket-btn">
+                                    <a asp-action="checkout" asp-controller="order">@item.BtnText</a>
+                                </div>
+                            </li>
                             }
 
 

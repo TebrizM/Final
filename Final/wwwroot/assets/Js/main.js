@@ -14,6 +14,8 @@ $(".one-time").slick({
 
 //My Playlisy
 
+const music = new Audio("./assets/media/music/Gojira - Global Warming.mp3");
+
 
 const songs = [
   {

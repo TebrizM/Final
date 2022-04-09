@@ -1,5 +1,13 @@
 ﻿@model HomeViewModel
 
+@{ 
+    <style>
+        .viewMyplaylist{
+            text-decoration:none;
+        }
+    </style>
+}
+
     <section class="homeHero">
         <div class="container">
             <div class="slider">
@@ -60,7 +68,7 @@
                     </span>
                 </div>
                 <div class="col-12 col-lg-6 text-end album-button">
-                    <a>
+                    <a class="viewMyplaylist" asp-action="index" asp-controller="album">
                         View My Playlist
                     </a>
                 </div>
@@ -342,9 +350,7 @@
 
                                         </p>
                                     </div>
-                                    <div class="ticket-btn">
-                                        <a href="">@item.BtnText</a>
-                                    </div>
+                                   
                                 </li>
                             }
                         </ul>

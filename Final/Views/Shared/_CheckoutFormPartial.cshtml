@@ -1,0 +1,38 @@
+﻿@model Order
+<form asp-action="create" asp-controller="order" method="post" id="order-form">
+    <div class="row">
+      
+            <div class="single-input">
+                <label asp-for="FullName" class="required">FullName</label>
+                <input type="text" asp-for="FullName" placeholder="FullName" required />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+       
+    </div>
+    <div class="single-input">
+        <label asp-for="Email" class="required">Email Address</label>
+        <input type="email" asp-for="Email" placeholder="Email Address" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="single-input">
+        <label asp-for="Country" class="required">Country*</label>
+        <input asp-for="Country" type="text" placeholder="Country">
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+    <div class="single-input">
+        <label asp-for="Address" class="required mt-20">Street address</label>
+        <input type="text" asp-for="Address" placeholder="Street address Line 1" required />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="single-input">
+        <label asp-for="City" class="required">Town / City</label>
+        <input type="text" asp-for="City" placeholder="Town / City" required />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="single-input phone-inp">
+        <label asp-for="PhoneNumber">Phone</label>
+        <input type="text" asp-for="PhoneNumber" placeholder="Phone" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+</form>

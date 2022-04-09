@@ -26,5 +26,6 @@ namespace Final.Models
         public DbSet<Tours> Tours { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<TourOrderItem> TourOrderItems { get; set; }
     }
 }

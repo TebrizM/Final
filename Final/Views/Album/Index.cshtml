@@ -1,6 +1,16 @@
 ﻿@model AlbumViewModel
 
 @{ 
+    int counter = (ViewBag.PageIndex - 1) * 6;
+    var temp = -1;
+    if (ViewBag.PageIndex == 1)
+    {
+        temp = 0;
+    }
+    if (temp == ViewBag.TotalPages)
+    {
+        temp = -2;
+    }
     <style>
 
         .album-page-title-inner {
@@ -64,11 +74,24 @@
                 <div class="col-12">
 
                     <div class="site-pagination">
-                        <a href="">Back</a>
-                        <a class="active-pagination" href="">1</a>
-                        <a href="">2</a>
-                        <a href="">3</a>
-                        <a href="">Next</a>
+                        
+                  
+                        @if (ViewBag.PageIndex > 1)
+                        {
+                            <a class="" href="@Url.Action("index","album",new { page=1})">Back</a>
+                        }
+
+                        @for (int i = 1; i <= 3; i++, temp++)
+                        {
+                            if ((ViewBag.PageIndex + temp) != 0 && (ViewBag.PageIndex + temp) != -1)
+                            {
+                                <a href="@Url.Action("index","album", new { page=ViewBag.PageIndex+temp})" class="@(ViewBag.PageIndex+temp==ViewBag.PageIndex?"active-pagination":"")" >@(ViewBag.PageIndex+temp)</a>
+                            }
+                        }
+                        @if (ViewBag.PageIndex < ViewBag.TotalPages)
+                        {
+                            <a class="Next" href="@Url.Action("index","album", new {page=ViewBag.TotalPages})">Next</a>
+                        }
                     </div>
                 </div>
             </div>

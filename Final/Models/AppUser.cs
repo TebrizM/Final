@@ -15,8 +15,6 @@ namespace Final.Models
         public string Country { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
-        public string Image { get; set; }
-        [NotMapped]
-        public IFormFile ProfileImage { get; set; }
+        public List<BlogComment> BlogComments { get; set; }
     }
 }

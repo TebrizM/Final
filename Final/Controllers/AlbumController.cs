@@ -16,13 +16,17 @@ namespace Final.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
+            ViewBag.PageIndex = page;
+
+            var albums = _context.Albums.Include(x => x.AlbumTracks).Include(x => x.Singer).Skip((page - 1) * 6).Take(6).ToList();
             AlbumViewModel albumVM = new AlbumViewModel
             {
                 AlbumTracks = _context.Tracks.ToList(),
-                Albums = _context.Albums.Include(x => x.AlbumTracks).Include(x => x.Singer).ToList(),
+                Albums = albums
             };
+            ViewBag.TotalPages = (int)Math.Ceiling(albums.Count() / 6d);
 
             return View(albumVM);
         }
