@@ -149,39 +149,38 @@ seek.addEventListener('change', () => {
 })
 
 music.addEventListener('ended', () => {
-    AllPlayIcon(document.getElementsByClassName('playListPlay'));
-    PauseIcon(Array.from(document.getElementsByClassName('playListPlay'))[index]);
-    wave.classList.remove("active2");
+    masterPlay.classList.add('bi-pause-fill')
+    wave.classList.add("active2");
 })
 
 let volIcon = document.getElementById('vol-Icon');
 let vol = document.getElementById('vol');
 let volBar = document.getElementsByClassName('vol_bar');
 
-vol.addEventListener('change', () => {
-    if (vol.value == 0) {
-        volIcon.classList.remove('bi-volume-up-fill')
-        volIcon.classList.add('bi-volume-mute-fill')
-        volIcon.classList.remove('bi-volume-down-fill')
+//vol.addEventListener('change', () => {
+//    if (vol.value == 0) {
+//        volIcon.classList.remove('bi-volume-up-fill')
+//        volIcon.classList.add('bi-volume-mute-fill')
+//        volIcon.classList.remove('bi-volume-down-fill')
 
-    }
-    if (vol.value > 0) {
-        volIcon.classList.remove('bi-volume-up-fill')
-        volIcon.classList.remove('bi-volume-mute-fill')
-        volIcon.classList.add('bi-volume-down-fill')
+//    }
+//    if (vol.value > 0) {
+//        volIcon.classList.remove('bi-volume-up-fill')
+//        volIcon.classList.remove('bi-volume-mute-fill')
+//        volIcon.classList.add('bi-volume-down-fill')
 
-    }
-    if (vol.value > 50) {
-        volIcon.classList.add('bi-volume-up-fill')
-        volIcon.classList.remove('bi-volume-mute-fill')
-        volIcon.classList.remove('bi-volume-down-fill')
+//    }
+//    if (vol.value > 50) {
+//        volIcon.classList.add('bi-volume-up-fill')
+//        volIcon.classList.remove('bi-volume-mute-fill')
+//        volIcon.classList.remove('bi-volume-down-fill')
 
-    }
-    let volVal = vol.value;
-    volBar.style.width = `${volVal}%`;
+//    }
+//    let volVal = vol.value;
+//    volBar.style.width = `${volVal}%`;
 
-    music.volume = volVal / 100;
-})
+//    music.volume = volVal / 100;
+//})
 
 let back = document.getElementById('back')
 let next = document.getElementById('next')
@@ -195,13 +194,7 @@ back.addEventListener('click', () => {
     music.src = `./uploads/tracks/${Array.from(document.getElementsByClassName('playListPlay'))[index].dataset.src}`;
 
     music.play();
-    //let songtitle = songs.filter((el) => {
-    //  return el.id == index;
-    //});
-    //songtitle.forEach((el) => {
-    //  let { songName } = el;
-    //  titlePlay.innerHTML = songName;
-    //});
+ 
     makeAllPlays();
     AllPlayIcon(document.getElementsByClassName('playListPlay'));
     PauseIcon(Array.from(document.getElementsByClassName('playListPlay'))[index]);
@@ -217,13 +210,7 @@ next.addEventListener('click', () => {
     music.src = `./uploads/tracks/${Array.from(document.getElementsByClassName('playListPlay'))[index].dataset.src}`;
 
     music.play();
-    //let songtitle = songs.filter((el) => {
-    //  return el.id == index;
-    //});
-    //songtitle.forEach((el) => {
-    //  let { songName } = el;
-    //  titlePlay.innerHTML = songName;
-    //});
+
     makeAllPlays();
     AllPlayIcon(document.getElementsByClassName('playListPlay'));
     PauseIcon(Array.from(document.getElementsByClassName('playListPlay'))[index]);

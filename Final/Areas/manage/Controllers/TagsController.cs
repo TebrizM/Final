@@ -70,35 +70,23 @@ namespace Final.Areas.manage.Controllers
 
             return RedirectToAction("Index");
         }
-
-        //DELETE ACTION
-        //DELETE ACTION
         public IActionResult Delete(int id)
         {
-            Tags existTags = _context.Tags.FirstOrDefault(x => x.Id == id && !x.IsDeleted);
+            Tags tags = _context.Tags.FirstOrDefault(x => x.Id == id);
 
-            if (existTags == null)
-                return NotFound();
-
-            
-
-            existTags.IsDeleted = true;
-            _context.SaveChanges();
-
-            return RedirectToAction("index");
+            return View(tags);
         }
 
-        //RESTORE ACTION
-        public IActionResult Restore(int id)
+        [HttpPost]
+        public IActionResult Delete(Tags tags)
         {
-            Tags existTags = _context.Tags.FirstOrDefault(x => x.Id == id && x.IsDeleted);
+            Tags existtags = _context.Tags.FirstOrDefault(x => x.Id == tags.Id);
 
-            if (existTags == null)
+            if (existtags == null)
                 return NotFound();
 
-            
+            _context.Tags.Remove(existtags);
 
-            existTags.IsDeleted = false;
             _context.SaveChanges();
 
             return RedirectToAction("index");

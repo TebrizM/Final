@@ -152,7 +152,7 @@ namespace Final.Controllers
             return RedirectToAction("index", "home");
         }
 
-        [Authorize(Roles = "Member")]
+        //[Authorize(Roles = "Member")]
         public async Task<IActionResult> Profile()
         {
             AppUser member = await _userManager.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefaultAsync();
@@ -287,9 +287,17 @@ namespace Final.Controllers
 
             var link = Url.Action("ResetPassword", "Account", new { dbUser.Id, token }, protocol: HttpContext.Request.Scheme);
 
-            var message = $"<a href='{link}'>reset password</a>";
 
-            await EmailUtil.SendEmailAsync(email, "Reset Password", message);
+
+            var path = _env.WebRootPath + Path.DirectorySeparatorChar.ToString() + "assets" + Path.DirectorySeparatorChar.ToString() + "templates" + Path.DirectorySeparatorChar.ToString() + "PasswordMail.html";
+
+            Dictionary<string, string> Replaces = new Dictionary<string, string>();
+
+            Replaces.Add("{url}", link.ToString());
+
+            await EmailUtil.SendEmailAsync(email, "Salam hörmətli müştəri", path, Replaces);
+
+
 
             return RedirectToAction("Login");
         }

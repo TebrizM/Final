@@ -718,3 +718,6 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CheckoutFormPartial.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\Order.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Track\Delete.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tags\Delete.cshtml.g.cs

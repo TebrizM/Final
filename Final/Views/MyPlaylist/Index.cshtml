@@ -26,7 +26,14 @@
 
         .master_play {
             position: relative;
-            top: 148px;
+        
+        }
+        .menu_song {
+            height: 536px !important;
+            overflow-y: auto;
+        }
+        .sidebar-artist{
+            padding-bottom:116px !important;
         }
     </style>
 }
@@ -58,7 +65,7 @@
                         <ul>
                             @foreach (var item in Model.Singers)
                             {
-                                <li><a style="color:@(ViewBag.SingerId==item.Id?"#62ab00":"")" asp-action="index" asp-route-singerId="@item.Id">@item.Name (@item.Albums.Count)</a></li>
+                                <li><a style="color:@(ViewBag.SingerId==item.Id?"#62ab00":"")" asp-action="index" asp-route-singerId="@item.Id">@item.Name (@item.Tracks.Count)</a></li>
                             }
                         </ul>
                     </div>
@@ -118,13 +125,13 @@
                         </div>
                         <span id="currentEnd">0:00</span>
 
-                        <div class="vol">
+                        @*<div class="vol">
                             <i class="bi bi-volume-up-fill" id="vol-Icon"></i>
                             <input type="range" id="vol" min="0" value="30" max="100">
                             <div class="vol_bar"></div>
 
 
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>

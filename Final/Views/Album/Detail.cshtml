@@ -1,9 +1,20 @@
 ﻿@model AlbumDetailViewModel
 
 @{ 
+    int i = 0;
     int counter = 0;
 
- 
+    <style>
+        footer {
+            margin-top: 206px !important;
+        }
+        .songItem{
+            justify-content:space-between !important;
+        }
+        .menu_song {
+            overflow: auto;
+        }
+    </style>
 }
 <main>
     <section id="albumDetail">
@@ -13,7 +24,7 @@
                     <div class="breadcrumb">
                         <div class="br-icon">
                             <i class="bi bi-headphones"></i>
-                        </div>
+                        </div>  
                         <div class="br-title">
                             <h1>Album's Details</h1>
                         </div>
@@ -39,9 +50,12 @@
                     <div class="albums-information">
                         <h5>Release Date: <span>@Model.Albums.CreatedAt.ToString("yyyy")</span></h5>
                         <h5>@Model.Albums.AlbumTracks.Count-Tracks</h5>
-            
+
                     </div>
+
                 </div>
+
+
             </div>
             <div class="row">
                 <div class="col-12 col-lg-12">
@@ -49,21 +63,28 @@
                         <ul>
                             @foreach (var item in Model.Tracks)
                             {
+                                counter++;
+                            <li style="border-bottom: 1px solid #80808066;" class="songItem">
+                                <span>@counter</span>
+
+                                <h5>
+                                    @item.TackName
+
+                                </h5>
+                                <div class="add-btn">
+                                    <a asp-action="addtoplaylist" asp-controller="album">Add to Playlist</a>
+
+                                </div>
+                            </li>
                               
-                                <li class="songItem">
-                                    <h5>
-                                        @item.TackName
-                                    </h5>
-                                    <i class="bi playListPlay bi-play-circle-fill" id="@item.Id"></i>
-                                </li>
                             }
 
 
                         </ul>
                     </div>
-
                 </div>
             </div>
+
         </div>
     </section>
 </main>

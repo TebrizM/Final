@@ -33,12 +33,13 @@ namespace Final.Controllers
 
         public IActionResult Detail(int Id)
         {
-            Album album = _context.Albums.Include(x => x.AlbumTracks).Include(x => x.Singer).FirstOrDefault(x => x.Id == Id && !x.IsDeleted);
+       
 
             AlbumDetailViewModel albumdetailVM = new AlbumDetailViewModel
             {
-                Albums = album,
-                Tracks = _context.Tracks.ToList()
+                Albums = _context.Albums.Include(x => x.AlbumTracks).Include(x => x.Singer).FirstOrDefault(x => x.Id == Id && !x.IsDeleted),
+                 Tracks = _context.Tracks.ToList()
+
             };
 
 

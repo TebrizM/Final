@@ -3,6 +3,17 @@
 
     Layout = null;
     <link rel="stylesheet" href="~/assets/sass/css/main.css" />
+    <style>
+        .back-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back {
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
 }
 
 
@@ -25,14 +36,10 @@
                                 <span asp-validation-for="UserName" class="text-danger"></span>
                             </div>
                             <div class="login-form">
-                                <input asp-for="Email" type="email"  id="name" placeholder="E-Mail">
+                                <input asp-for="Email" type="email" id="name" placeholder="E-Mail">
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
-                            @*<div class="login-form">
-                                <input asp-for="Image" type="file" class="login-image">
-                                <span asp-validation-for="Image" class="text-danger"></span>
 
-                            </div>*@
                             <div class="login-form">
                                 <input asp-for="Password" type="password" placeholder="Enter your Password" required />
                                 <span asp-validation-for="Password" class="text-danger"></span>
@@ -42,11 +49,16 @@
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
 
-                            <input type="checkbox">
-                            <label for=""><p>Remmember Me</p></label>
-                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>  
+
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                             <div class="login-form">
                                 <input type="submit" value="Sign Up" class="submit-btn">
+                            </div>
+                            <div class="back-btn">
+                                <a class="back" asp-action="login" asp-controller="account">
+                                    <i class="bi bi-arrow-left"></i>
+                                    Go Back
+                                </a>
                             </div>
                         </form>
                     </div>

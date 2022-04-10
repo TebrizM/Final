@@ -4,6 +4,24 @@
 
     Layout = null;
     <link rel="stylesheet" href="~/assets/sass/css/main.css" />
+    <style>
+        .login-btns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .rememberMe {
+            margin-right: 215px;
+        }
+        .back-btn{
+            text-align:center;
+            margin-top:20px;
+        }
+        .back{
+            text-decoration:none;
+            color:#fff;
+        }
+    </style>
 }
 <main>
     <section id="login">
@@ -12,7 +30,9 @@
             <div class="row">
                 <div class="col-12 col-lg-12 login-col">
                     <div class="login-card">
+                       
                         <form asp-action="login">
+
                             <h2>Login</h2>
                             <div class="login-form">
                                 <input asp-for="UserName" type="text" placeholder="Username" required />
@@ -23,7 +43,7 @@
                             </div>
                             <div class="login-btns">
                                 <input type="checkbox" id="rememberMe">
-                                <label asp-for="IsPersistent" for="rememberMe"><p>Remmember Me</p></label>
+                                <label class="rememberMe" asp-for="IsPersistent" for="rememberMe"><p>Remmember Me</p></label>
 
                                 <a asp-action="ForgotPassword" asp-controller="account">Forgot Password?</a>
                             </div>
@@ -33,8 +53,13 @@
                             </div>
                             <p class="register-info">Don't have an account? <a asp-action="register" asp-controller="account">Sign Up Here</a></p>
 
-
-
+                            <div class="back-btn">
+                                <a class="back" asp-action="index" asp-controller="home">
+                                    <i class="bi bi-arrow-left"></i>
+                                    Go Back
+                                </a>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>

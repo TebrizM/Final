@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -8,8 +9,18 @@ namespace Final.Utils
 {
     public static class EmailUtil
     {
-        public async static Task SendEmailAsync(string email, string subject, string body)
+        public async static Task SendEmailAsync(string email, string subject, string path, Dictionary<string, string> replaces)
         {
+            string body = String.Empty;
+            using (StreamReader streamReader = System.IO.File.OpenText(path))
+            {
+                body = streamReader.ReadToEnd();
+            }
+
+            foreach (var replace in replaces)
+            {
+                body = body.Replace(replace.Key, replace.Value);
+            }
             MailMessage mail = new MailMessage();
             mail.To.Add(email);
             mail.From = new MailAddress(Constants.EmailAdress);

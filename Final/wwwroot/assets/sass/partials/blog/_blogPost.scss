@@ -60,3 +60,8 @@
     justify-content: space-around;
    
 }
+@media screen and (max-witdh: 425px) {
+    .br-subtitle{
+        right: 52px;
+    }
+}

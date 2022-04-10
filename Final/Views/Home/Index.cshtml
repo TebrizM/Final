@@ -1,10 +1,31 @@
 ﻿@model HomeViewModel
 
 @{ 
+    int i = 0;
+    int counter = 0;
     <style>
         .viewMyplaylist{
-            text-decoration:none;
+        text-decoration:none;
+    }
+        .tour-btn a{
+        text-decoration:none;
+        position: relative;
+        float: right;
+        font-size: 14px;
+        padding: 20px 33px 15px;
+        min-width: 149px;
+        color: #fff;
+            line-height: 1;
+        text-align: center;
+        font-weight: 700;
+        border: none;
+        text-transform: uppercase;
+        background: linear-gradient(45deg, #503aca 0%, #ea34ff 100%);
         }
+        .songItem{
+            justify-content: flex-start !important;
+        }
+
     </style>
 }
 
@@ -108,39 +129,25 @@
                     <div class="player_left">
                         <div class="player-left-inner">
                             <div class="row">
-                                <div class="col-lg-5 col-sm-4">
-                                    <div class="track-info-left">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                </div>
+                              
+
                                 <div class="col-lg-7 col-sm-8 text-right">
                                     <div class="controls">
-
-                                        <div class="track-btn prev-track">
-                                            <i class="fa-solid fa-backward" id="back"></i>
-                                        </div>
-                                        <div class="track-play-btn">
-                                            <i class="fa-solid fa-play" id="masterPlay"></i>
-                                        </div>
-                                        <div class="track-btn next-track">
-                                            <i class="fa-solid fa-forward" id="next"></i>
-                                        </div>
-                                        <div class="track-btn">
-                                            <i class="fa-solid fa-volume-high"></i>
-                                        </div>
+                                        <i class="bi bi-skip-start-fill" id="back"></i>
+                                        <i class="bi bi-play-fill" id="masterPlay"></i>
+                                        <i class="bi bi-skip-end-fill" id="next"></i>
                                         <div class="track-timers">
-                                            <span class="current-time" id="currentStart">00:00</span>
+                                            <span id="currentStart">0:00</span>
                                             /
-                                            <span class="total-time" id="currentEnd">03:06</span>
+                                            <span id="currentEnd">0:00</span>
                                         </div>
 
 
                                     </div>
                                     <div class="track-progress">
 
-                                        <input class="progress" id="seek" type="range" min="1" max="100" value="0" 
-                                        >
+                                        <input class="progress" id="seek" type="range" min="1" max="100" value="0" class="seek_slider"
+                                               anychange="seekTo()">
 
                                     </div>
                                 </div>
@@ -154,127 +161,27 @@
                             <h4 class="sub-title">Latest Album</h4>
                             <h2>WHEN WE ALL FALL ASLEEP</h2>
                         </div>
-                        <div class="playlists">
+                        <div class="menu_song">
                             <ul>
-                                <li>
-                                    <div class="play-btn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <div class="track-info">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
-                                    <div class="add-btn">
-                                        <a href="">Add to Playlist</a>
+                                @foreach (var item in Model.AlbumTracks)
+                                {
+                                    counter++;
+                                    <li class="songItem">
+                                        <span>@counter</span>
+                            
+                                        <div class="main-track-name">
+                                            <h5>
+                                                @item.TackName
 
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="play-btn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <div class="track-info">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
 
-                                    <div class="add-btn">
-                                        <a href="">Add to Playlist</a>
-
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="play-btn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <div class="track-info">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
-
-                                    <div class="add-btn">
-                                        <a href="">Add to Playlist</a>
-
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="play-btn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <div class="track-info">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
-
-                                    <div class="add-btn">
-                                        <a href="">Add to Playlist</a>
-
-                                    </div>
-                                </li>
-                                <li class="vip-member">
-                                    <div class="play-btn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <div class="track-info">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
-
-                                    <div class="add-btn">
-                                        <a href="">Add to Playlist</a>
-
-                                    </div>
-                                </li>
-                                <li class="vip-member">
-                                    <div class="play-btn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <div class="track-info">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
-
-                                    <div class="add-btn">
-                                        <a href="">Add to Playlist</a>
-
-                                    </div>
-                                </li>
-                                <li class="vip-member">
-                                    <div class="play-btn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <div class="track-info">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
-
-                                    <div class="add-btn">
-                                        <a href="">Add to Playlist</a>
-
-                                    </div>
-                                </li>
-                                <li class="vip-member">
-                                    <div class="play-btn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <div class="track-info">
-                                        <h4>I'm Mess</h4>
-                                        <p>Bebe Rexha</p>
-                                    </div>
-                                    <audio src="./assets/media/music/1.mp3" id="audio"></audio>
-
-                                    <div class="add-btn">
-                                        <a href="">Add to Playlist</a>
-
-                                    </div>
-                                </li>
+                                                <div class="subtitle">@item.Album.Singer.Name</div>
+                                            </h5>
+                                        </div>
+                                       
+                                        <i class="bi playListPlay bi-play-circle-fill" data-src="@item.GeneratedSource" data-index="@i"></i>
+                                    </li>
+                                    i++;
+                                }
                             </ul>
                         </div>
                     </div>
@@ -311,7 +218,7 @@
                 </div>
                 <div class="col-12 col-lg-4">
                     <div class="tour-btn">
-                        <button asp-action="index" asp-controller="tours">View ALL</button>
+                        <a asp-action="index" asp-controller="tours">View ALL</a>
                     </div>
                 </div>
             </div>
@@ -319,40 +226,50 @@
                 <div class="col-12 col-lg-12">
                     <div class="tours-list">
                         <ul>
-                            @foreach (var item in Model.Tours)
+                            @for (int b = 1; b < 5; b++)
                             {
-                                <li style="margin-top:0px;">
+                                <li>
                                     <div class="tour-date">
-                                        <h2>@item.Date.ToString("dd")</h2>
-                                        <span>@item.Date.ToString("MMM")</span>
+                                        <h2>@Model.Tours[b].Date.ToString("dd")</h2>
+                                        <span>@Model.Tours[b].Date.ToString("MMM")</span>
                                     </div>
                                     <div class="tour-info">
                                         <p>
 
-                                            @item.Info
+                                            @Model.Tours[b].Info
                                         </p>
                                         <span>
 
-                                            @item.Desc
+                                            @Model.Tours[b].Desc
                                         </span>
                                     </div>
                                     <div class="tour-location">
                                         <p>
                                             <i class="bi bi-geo-alt-fill"></i>
-                                            @item.Location
+                                            @Model.Tours[b].Location
 
                                         </p>
                                     </div>
                                     <div class="tour-date">
                                         <p>
                                             <i class="bi bi-clock"></i>
-                                            @item.Date.ToString("hh:ff")
+                                            @Model.Tours[b].Date.ToString("hh:ff")
 
                                         </p>
                                     </div>
-                                   
+                                    <div class="adding-btns">
+                                        <i class="bi bi-dash-lg remove-button"></i>
+                                        <a asp-action="AddOrder" asp-controller="tours" asp-route-id="@Model.Tours[b].Id">
+                                            <i class="bi bi-plus-lg add-button"></i>
+                                        </a>
+                                    </div>
+                                    <div class="ticket-btn">
+                                        <a asp-action="checkout" asp-controller="order">@Model.Tours[b].BtnText</a>
+                                    </div>
                                 </li>
                             }
+
+
                         </ul>
                     </div>
                 </div>

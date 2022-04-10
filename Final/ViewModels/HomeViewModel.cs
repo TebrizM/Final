@@ -10,6 +10,7 @@ namespace Final.ViewModels
     {
         public List<Slider> Sliders { get; set; }
         public List<Album> Albums { get; set; }
+ 
         public List<AlbumTrack> AlbumTracks { get; set; }
         public List<Tours> Tours { get; set; }
         public Dictionary<string, string> Settings { get; set; }

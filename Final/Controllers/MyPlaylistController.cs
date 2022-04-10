@@ -39,7 +39,7 @@ namespace Final.Controllers
          
                 AlbumTracks = _context.Tracks.ToList(),
                 Genres = _context.Genres.Include(x => x.Albums).ToList(),
-                Singers = _context.Singers.Include(x=>x.Albums).ToList(),
+                Singers = _context.Singers.Include(x=>x.Albums).Include(x=>x.Tracks).ToList(),
                 Albums = _context.Albums.Include(x=>x.AlbumTracks).Include(x=>x.Singer).Include(x=>x.Genres).ToList()
 
 

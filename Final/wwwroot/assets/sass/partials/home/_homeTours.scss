@@ -44,6 +44,7 @@
     flex-direction: column;
     li {
       display:flex;
+      align-items: center;
       justify-content: space-between;
       transition: all 0.3s linear;
       border-bottom: 1px solid #262037;
@@ -144,19 +145,39 @@
     }
   }
 }
-
+@media screen and(max-width: 1024px){
+  .tour-info {
+  
+    span{
+      font-size: 15px !important;
+    }
+  }
+}
 @media screen and(max-width: 768px) {
   .tour-info {
     padding-left: 0px !important;
     p {
       font-size: 17px !important;
+      position: relative;
+      top: 16px;
+    }
+    span{
+      display: none!important;
     }
   }
   .tour-date {
-    margin-right: 50px;
-    p {
+    margin-right: 17px !important;
+    h2{
+      font-size: 17px !important;
+    }
+    span {
       font-size: 13px !important;
     }
+  }
+  .adding-btns{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .tour-location {
     p {
@@ -168,6 +189,25 @@
     #tours{
         height: auto;
     }
+    .tour-info{
+      p{
+        text-align: center;
+      }
+
+    }
+    .tour-location{
+      text-align: center;
+    }
+    .adding-btns{
+      display: flex;
+      flex-direction: row;
+     .add-button{
+       margin-left: 55px;
+     }
+     .remove-button{
+      margin-right: 55px;
+     }
+    }
   .tours-list {
     ul {
       li {
@@ -175,18 +215,30 @@
         margin-bottom: 130px;
         .tour-date {
           i {
-            position: relative;
-            left: 18px;
+ 
+
+            margin-right: 24px;
           }
         }
       }
     }
   }
-  .tour-btn {
-    button {
-      float: left;
-    }
-  }
+ .ticket-btn{
+  position: relative;
+  right: -8px;
+ }
 }
 @media screen and(max-width: 375px) {
+  .ticket-btn{
+    position: relative;
+    right: -10px;
+   }
+
+}
+@media screen and(max-width: 320px) {
+  .ticket-btn{
+    position: relative;
+    right: -13px;
+   }
+
 }
