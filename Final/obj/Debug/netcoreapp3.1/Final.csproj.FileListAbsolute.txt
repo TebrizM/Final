@@ -717,3 +717,4 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Final.genrun
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CheckoutFormPartial.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\Order.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Track\Delete.cshtml.g.cs

@@ -12,6 +12,7 @@ namespace Final.Models
         [StringLength(maximumLength: 50)]
         public string Name { get; set; }
 
+
         public List<Album> Albums { get; set; }
     }
 }

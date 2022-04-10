@@ -60,10 +60,6 @@ namespace Final.Areas.manage.Controllers
             }
 
 
-
-
-
-
             track.GeneratedSource = Guid.NewGuid().ToString() + track.TrackSource.FileName;
 
             string path = Path.Combine(_env.WebRootPath, "uploads/tracks", track.GeneratedSource);
@@ -75,6 +71,28 @@ namespace Final.Areas.manage.Controllers
 
 
             _context.Tracks.Add(track);
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            AlbumTrack track = _context.Tracks.FirstOrDefault(x => x.Id == id);
+
+            return View(track);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Singer singer)
+        {
+            AlbumTrack existtrack = _context.Tracks.FirstOrDefault(x => x.Id == singer.Id);
+
+            if (existtrack == null)
+                return NotFound();
+
+            _context.Tracks.Remove(existtrack);
+
             _context.SaveChanges();
 
             return RedirectToAction("index");
