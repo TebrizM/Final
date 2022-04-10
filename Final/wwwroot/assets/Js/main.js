@@ -13,30 +13,7 @@ $(".one-time").slick({
 });
 
 //Accordion
-$(function () {
-    let x = true;
-    $(document).on("click", ".accordion-header", function () {
-        if (x) {
-            x = false;
-            if ($(".actives")[0] != $(this).next()[0]) {
-                $(".actives").slideUp(300, function () {
-                    $(this).removeClass("actives");
-                });
-                $(this)
-                    .next()
-                    .slideDown(300, function () {
-                        $(this).addClass("actives");
-                        x = true;
-                    });
-            } else {
-                $(".actives").slideUp(300, function () {
-                    $(this).removeClass("actives");
-                    x = true;
-                });
-            }
-        }
-    });
-});
+
 
 //My PlaylisT
 
@@ -153,34 +130,9 @@ music.addEventListener('ended', () => {
     wave.classList.add("active2");
 })
 
-let volIcon = document.getElementById('vol-Icon');
-let vol = document.getElementById('vol');
-let volBar = document.getElementsByClassName('vol_bar');
 
-//vol.addEventListener('change', () => {
-//    if (vol.value == 0) {
-//        volIcon.classList.remove('bi-volume-up-fill')
-//        volIcon.classList.add('bi-volume-mute-fill')
-//        volIcon.classList.remove('bi-volume-down-fill')
 
-//    }
-//    if (vol.value > 0) {
-//        volIcon.classList.remove('bi-volume-up-fill')
-//        volIcon.classList.remove('bi-volume-mute-fill')
-//        volIcon.classList.add('bi-volume-down-fill')
 
-//    }
-//    if (vol.value > 50) {
-//        volIcon.classList.add('bi-volume-up-fill')
-//        volIcon.classList.remove('bi-volume-mute-fill')
-//        volIcon.classList.remove('bi-volume-down-fill')
-
-//    }
-//    let volVal = vol.value;
-//    volBar.style.width = `${volVal}%`;
-
-//    music.volume = volVal / 100;
-//})
 
 let back = document.getElementById('back')
 let next = document.getElementById('next')
