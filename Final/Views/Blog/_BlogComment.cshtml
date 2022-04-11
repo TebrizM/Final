@@ -1,21 +1,25 @@
 ﻿@model BlogComment
 
 
-<form id="comment-form" asp-action="Comment" asp-controller="blog" method="post" class="mt--15 site-form ">
-    <div class="row">
-        <input type="hidden" value="@Model.BlogId" name="blogId" />
-        
-            <div class="col-12 col-lg-12">
-                <label asp-for="Text">Comment</label>
-                <textarea name="" asp-for="Text" placeholder="Comment" id="" cols="30" rows="10"></textarea>
-                <span class="text-danger" asp-validation-for="Text"></span>
+<div class="rating-row pt-2">
+
+    <form id="comment-form" asp-action="comment" asp-controller="blog" method="post" class="mt--15 site-form ">
+        <div class="row">
+            <input type="hidden" value="@Model.BlogId" name="BlogId" />
+            <div class="col-12">
+                <div class="form-group">
+                    <label asp-for="Text">Comment</label>
+                    <textarea asp-for="Text" cols="30" rows="10"
+                              class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="Text"></span>
+                </div>
             </div>
-       
-        <div class="col-lg-4">
-            <div>
-                <button class="sbmnt-btn" type="submit">Submit</button>
+            <div class="col-lg-4">
+                <div class="sbmnt-btn">
+                    <button type="submit" class="btn btn-white">Post Comment</button>
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 

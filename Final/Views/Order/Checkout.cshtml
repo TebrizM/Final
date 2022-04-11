@@ -67,7 +67,11 @@
                                     {
                                         <tr>
                                             <td>
-                                                <a asp-controller="product" asp-action="detail" asp-route-id="@item.Tours.Id">@item.Tours.Info <strong>@item.Count</strong></a>
+                                                <a asp-route-id="@item.Tours.Id">@item.Tours.Info <strong>@item.Count</strong></a>
+                                                <a asp-action="RemoveOrder" asp-controller="tours" asp-route-id="@item.Tours.Id">
+
+                                                    <i class="bi bi-dash-lg remove-button"></i>
+                                                </a>
                                             </td>
                                             <td>$@((item.Tours.DiscountPercent>0? (item.Tours.SalePrice*(1-item.Tours.DiscountPercent/100))*item.Count :item.Tours.SalePrice*item.Count).ToString("0.00"))</td>
                                         </tr>

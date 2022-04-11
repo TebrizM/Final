@@ -26,7 +26,7 @@ namespace Final.Controllers
 
             if (tagId > 3 || tagId < 0)
             {
-                return BadRequest();
+                return RedirectToAction("error", "home");
             }
            
             BlogViewModel blogVM = new BlogViewModel
@@ -34,7 +34,7 @@ namespace Final.Controllers
                 Blogs = _context.Blogs.ToList(),
                 BlogTags = _context.BlogTags.ToList(),
                 Tags = _context.Tags.ToList(),
-                BlogComments = _context.BlogComments.ToList(),
+    
             };
             return View(blogVM);
         }
@@ -70,7 +70,7 @@ namespace Final.Controllers
    
 
             if (blogs == null)
-                return NotFound();
+                return RedirectToAction("error", "home");
 
             if (!ModelState.IsValid)
             {

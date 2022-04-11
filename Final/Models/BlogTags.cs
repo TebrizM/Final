@@ -8,11 +8,9 @@ namespace Final.Models
     public class BlogTags
     {
         public int Id { get; set; }
-
         public int BlogId { get; set; }
-        public Blog Blog { get; set; }
-
         public int TagsId { get; set; }
-        public Tags Tags { get; set; }
+        public Blog Book { get; set; }
+        public Tags Tag { get; set; }
     }
 }

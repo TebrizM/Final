@@ -32,5 +32,10 @@ namespace Final.Controllers
 
             return View(homeVM);
         }
+        public IActionResult Error()
+        {
+
+            return View("error");
+        }
     }
 }

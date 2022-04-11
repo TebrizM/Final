@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Final.ViewModels
 {
-    public class BlogDetailViewModel
+    public class PlaylistViewModel
     {
-        public Blog Blogs { get; set; }
-
-        public BlogComment BlogComments { get; set; }
-
+        public AlbumTrack Track { get; set; }
+        public int Count { get; set; }
     }
 }

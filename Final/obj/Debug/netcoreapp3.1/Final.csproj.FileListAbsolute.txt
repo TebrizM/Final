@@ -699,7 +699,6 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Album\Index.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Detail.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
-C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\_BlogComment.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\MyPlaylist\Index.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -721,3 +720,5 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tags\Delete.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\Error.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\_BlogComment.cshtml.g.cs

@@ -4,14 +4,16 @@ using Final.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Final.Migrations
 {
     [DbContext(typeof(HnBandContext))]
-    partial class HnBandContextModelSnapshot : ModelSnapshot
+    [Migration("20220411160401_ContactTableAdded")]
+    partial class ContactTableAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -471,34 +473,6 @@ namespace Final.Migrations
                     b.ToTable("Tours");
                 });
 
-            modelBuilder.Entity("Final.Models.TrackPlaylistItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AlbumTrackId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AlbumTrackId");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("TrackPlaylistItems");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -819,19 +793,6 @@ namespace Final.Migrations
                         .HasForeignKey("ToursId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Final.Models.TrackPlaylistItem", b =>
-                {
-                    b.HasOne("Final.Models.AlbumTrack", "AlbumTrack")
-                        .WithMany()
-                        .HasForeignKey("AlbumTrackId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Final.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

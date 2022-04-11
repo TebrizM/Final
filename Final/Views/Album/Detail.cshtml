@@ -61,7 +61,7 @@
                 <div class="col-12 col-lg-12">
                     <div class="menu_song">
                         <ul>
-                            @foreach (var item in Model.Tracks)
+                            @foreach (var item in Model.Albums.AlbumTracks)
                             {
                                 counter++;
                             <li style="border-bottom: 1px solid #80808066;" class="songItem">
@@ -72,7 +72,7 @@
 
                                 </h5>
                                 <div class="add-btn">
-                                    <a asp-action="addtoplaylist" asp-controller="album">Add to Playlist</a>
+                                    <a asp-action="AddTrack" asp-controller="myplaylist" asp-route-id="@item.Id">Add to Playlist</a>
 
                                 </div>
                             </li>

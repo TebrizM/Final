@@ -146,5 +146,67 @@ namespace Final.Controllers
 
             return basketVM;
         }
+
+        public IActionResult RemoveOrder(int id)
+        {
+            if (!_context.Tours.Any(x => x.Id == id))
+            {
+                return RedirectToAction("error", "home");
+            }
+
+            AppUser appUser = null;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                appUser = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin);
+            }
+
+            if (appUser == null)
+            {
+                string cookie = HttpContext.Request.Cookies["basket"];
+                List<TourItemViewModel> cookieItems = new List<TourItemViewModel>();
+
+                if (!string.IsNullOrWhiteSpace(cookie))
+                {
+                    cookieItems = JsonConvert.DeserializeObject<List<TourItemViewModel>>(cookie);
+                }
+
+                TourItemViewModel cookieItem = cookieItems.FirstOrDefault(x => x.TourId == id);
+
+
+                if (cookieItem.Count > 1)
+                {
+                    cookieItem.Count--;
+                }
+                else
+                {
+                    cookieItems.Remove(cookieItem);
+                }
+
+                cookie = JsonConvert.SerializeObject(cookieItems);
+                HttpContext.Response.Cookies.Append("basket", cookie);
+
+
+                return RedirectToAction("index", _getOrder(cookieItems));
+            }
+            else
+            {
+                TourOrderItem item = _context.TourOrderItems.FirstOrDefault(x => x.AppUserId == appUser.Id && x.ToursId == id);
+
+                if (item.Count > 1)
+                {
+                    item.Count--;
+                }
+                else
+                {
+                    _context.TourOrderItems.Remove(item);
+                }
+                _context.SaveChanges();
+
+                var items = _context.TourOrderItems.Where(x => x.AppUserId == appUser.Id).ToList();
+                return RedirectToAction("index", _getOrder(items));
+            }
+
+        }
     }
 }

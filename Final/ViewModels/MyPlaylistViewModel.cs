@@ -11,6 +11,7 @@ namespace Final.ViewModels
         public List<Album> Albums { get; set; }
         public List<Genre> Genres { get; set; }
         public List<Singer> Singers { get; set; }
-        public List<AlbumTrack> AlbumTracks { get; set; }
+        public TrackViewModel Tracks { get; set; }
+        public List<AlbumTrack> Track { get; set; }
     }
 }
