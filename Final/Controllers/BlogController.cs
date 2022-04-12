@@ -21,7 +21,7 @@ namespace Final.Controllers
         }
         public IActionResult Index(int? tagId)
         {
-            
+            TempData["Blog"] = "active-nav-btn";
             ViewBag.TagId = tagId;
 
             if (tagId > 3 || tagId < 0)

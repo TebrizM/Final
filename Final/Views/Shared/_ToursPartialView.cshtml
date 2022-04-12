@@ -1,0 +1,51 @@
+﻿@model OrderViewModel
+
+<ul>
+    @foreach (var item in Model.OrderItems)
+    {
+        <li>
+            <div class="tour-date">
+                <h2>@item.Tours.Date.ToString("dd")</h2>
+                <span>@item.Tours.Date.ToString("MMM")</span>
+            </div>
+            <div class="tour-info">
+                <p>
+
+                    @item.Tours.Info
+                </p>
+                <span>
+
+                    @item.Tours.Desc
+                </span>
+            </div>
+            <div class="tour-location">
+                <p>
+                    <i class="bi bi-geo-alt-fill"></i>
+                    @item.Tours.Location
+
+                </p>
+            </div>
+            <div class="tour-date">
+                <p>
+                    <i class="bi bi-clock"></i>
+                    @item.Tours.Date.ToString("hh:ff")
+
+                </p>
+            </div>
+            <div class="adding-btns">
+
+
+
+                <a class="add-to-order" asp-action="AddOrder" asp-controller="tours" asp-route-id="@item.Tours.Id">
+                    <i class="bi bi-plus-lg add-button"></i>
+                </a>
+            </div>
+            <div class="ticket-btn">
+                <a asp-action="checkout" asp-controller="order">@item.Tours.BtnText</a>
+            </div>
+        </li>
+    }
+
+
+</ul>
+

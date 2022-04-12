@@ -18,6 +18,7 @@ namespace Final.Controllers
         }
         public IActionResult Index()
         {
+            TempData["Home"] = "active-nav-btn";
 
             HomeViewModel homeVM = new HomeViewModel
             {

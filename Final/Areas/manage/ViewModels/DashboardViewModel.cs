@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Final.ViewModels
+namespace Final.Areas.manage.ViewModels
 {
-    public class ToursViewModel
+    public class DashboardViewModel
     {
         public List<Tours> Tours { get; set; }
-
-        
     }
 }

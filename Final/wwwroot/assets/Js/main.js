@@ -12,7 +12,53 @@ $(".one-time").slick({
     nextArrow: $(".next-arrow"),
 });
 
-//Accordion
+//Add and Remove
+$(document).ready(function () {
+
+    $(document).on("click", ".add-to-order", function (e) {
+        e.preventDefault();
+        let url = $(this).attr("href");
+        console.log(url)
+        fetch(url)
+            .then(function (response) {
+                if (response.ok) {
+                    toastr["success"]("Removed !")
+                    return response.text();
+                }
+                else {
+                    toastr["error"]("Added")
+                    return
+                }
+
+            }).then(data => {
+                $(".tours-list").html(data)
+            });
+
+    })
+    $(document).on("click", ".remove-basket", function (e) {
+        e.preventDefault();
+
+        let path = $(this).attr("href");
+
+        fetch(path)
+            .then(response => {
+                if (response.ok) {
+                    toastr["success"]("Removed !")
+                    return response.text();
+                }
+                else {
+                    toastr["error"]("Can't Removed !")
+                    return
+                }
+
+            }).then(data => {
+                $(".tours-list").html(data)
+
+            })
+
+    })
+
+})
 
 
 //My PlaylisT

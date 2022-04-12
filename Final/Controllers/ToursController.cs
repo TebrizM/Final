@@ -21,7 +21,7 @@ namespace Final.Controllers
         }
         public IActionResult Index()
         {
-
+            TempData["Tours"] = "active-nav-btn";
             ToursViewModel tourVM = new ToursViewModel
             {
                 Tours = _context.Tours.ToList()
@@ -204,7 +204,7 @@ namespace Final.Controllers
                 _context.SaveChanges();
 
                 var items = _context.TourOrderItems.Where(x => x.AppUserId == appUser.Id).ToList();
-                return RedirectToAction("index", _getOrder(items));
+                return RedirectToAction("checkout", "order", _getOrder(items));
             }
 
         }

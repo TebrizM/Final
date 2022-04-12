@@ -1,0 +1,35 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Create</h1>
+            <form method="post" asp-action="Edit" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Enter Title">
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" class="form-control">
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Text">Text</label>
+                    <textarea asp-for="Text" class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="Text"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Answer">Answer</label>
+                    <textarea asp-for="Answer" class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="Answer"></span>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

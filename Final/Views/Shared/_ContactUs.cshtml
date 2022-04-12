@@ -1,0 +1,19 @@
+﻿@model ContactUsViewModel
+
+<form asp-action="ContactUs" method="post" asp-controller="contactus">
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <input asp-for="Name" type="Text" class="name-inp" placeholder="Name">
+        </div>
+        <div class="col-12 col-lg-6">
+            <input asp-for="Email" class="email-inp" placeholder="E-Mail">
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-12">
+            <textarea asp-for="Text" placeholder="Message" cols="30" rows="10"></textarea>
+            <button type="submit" class="footer-btn">Contact Us</button>
+        </div>
+    </div>
+</form>

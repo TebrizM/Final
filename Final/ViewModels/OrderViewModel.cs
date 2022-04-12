@@ -9,5 +9,6 @@ namespace Final.ViewModels
     {
         public List<OrderItemViewModel> OrderItems { get; set; }
         public decimal TotalPrice { get; set; }
+        public ToursViewModel ToursViewModels {get;set;}
     }
 }

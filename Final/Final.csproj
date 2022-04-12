@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\manage\ViewModels\" />
     <Folder Include="wwwroot\uploads\albums\" />
     <Folder Include="wwwroot\uploads\accounts\" />
     <Folder Include="wwwroot\uploads\tracks\" />

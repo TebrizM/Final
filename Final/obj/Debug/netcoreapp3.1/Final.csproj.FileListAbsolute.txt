@@ -722,3 +722,7 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Tags\Delete.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\Error.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\_BlogComment.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ToursPartialView.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ContactUs.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\ContactUs\Edit.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\ContactUs\Index.cshtml.g.cs

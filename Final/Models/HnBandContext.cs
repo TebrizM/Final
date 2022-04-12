@@ -25,6 +25,7 @@ namespace Final.Models
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Tours> Tours { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<TourOrderItem> TourOrderItems { get; set; }
         public DbSet<TrackPlaylistItem> TrackPlaylistItems { get; set; }

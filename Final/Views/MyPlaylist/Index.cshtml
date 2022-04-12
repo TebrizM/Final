@@ -35,12 +35,26 @@
         .sidebar-artist{
             padding-bottom:116px !important;
         }
+        .bar {
+            background: rgb(241 206 255 / 26%) !important;
+            height: 5px !important;
+        }
+        .bar2 {
+            background: #8601ff !important;    
+        }
+        .remove-btn {
+            color: white;
+            float: right;
+            position: absolute;
+            left:80%;
+            text-decoration:none;
+        }
     </style>
 }
 <main>
     <section id="myPlaylist">
         <div class="container-fluid playlist-cont">
-            <div class="row genre-row">
+            @*<div class="row genre-row">
                 <div class="col-12 col-lg-2 sidebar-col">
                     <div class="sidebar-header">
                         <h2>Genres</h2>
@@ -70,7 +84,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="row list-row">
                 <div class="col-12 col-lg-10">
                     <div class="list-header">
@@ -78,19 +92,21 @@
                     </div>
                     <div class="menu_song">
                         <ul>
-                            @foreach (var item in Model.Track)
+                            @foreach (var item in Model.Tracks.PlaylistItems)
                             {
                                 counter++;
                                 <li class="songItem">
                                     <span>@counter</span>
-                                    <img src="~/uploads/albums/@item.Album.Image" alt="">
+                                    <img src="~/uploads/albums/@item.Track.Album.Image" alt="">
                                     <h5>
-                                        @item.TackName
+                                        @item.Track.TackName
 
 
-                                        <div class="subtitle">@item.Album.Singer.Name</div>
+                                        <div class="subtitle">@item.Track.Album.Singer.Name</div>
                                     </h5>
-                                    <i class="bi playListPlay bi-play-circle-fill" data-src="@item.GeneratedSource" data-index="@i"></i>
+                                    <a class="remove-btn" asp-action="RemoveTrack" asp-controller="album" asp-route-id="@item.Track.Id">X</a>
+
+                                    <i class="bi playListPlay bi-play-circle-fill" data-src="@item.Track.GeneratedSource" data-index="@i"></i>
                                 </li>
                                 i++;
                             }

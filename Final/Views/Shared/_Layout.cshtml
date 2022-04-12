@@ -50,20 +50,23 @@
                 <a style="text-decoration:none; color:pink;" asp-action="index" asp-controller="home">HN<span style="color: white;">Band</span></a>
             </div>
             <ul class="nav-links">
+
                 <li>
-                    <a class="active-nav-btn" asp-action="index" asp-controller="home">Home</a>
+                    <a class="@(TempData["Home"] !=null ? "active-nav-btn": " ")" asp-action="index" asp-controller="home">Home</a>
+            
                 </li>
                 <li>
-                    <a asp-action="index" asp-controller="album">Albums</a>
+                    <a class="@(TempData["Album"] !=null ? "active-nav-btn": " ")" asp-action="index" asp-controller="album">Albums</a>
                 </li>
                 <li>
-                    <a asp-action="index" asp-controller="tours">Tours</a>
+                    <a class="@(TempData["Tours"] !=null ? "active-nav-btn": " ")" asp-action="index" asp-controller="tours">Tours</a>
                 </li>
                 <li>
-                    <a asp-action="index" asp-controller="blog">Blog</a>
+                    <a class="@(TempData["Blog"] !=null ? "active-nav-btn": " ")" asp-action="index" asp-controller="blog">Blog</a>
                 </li>
                 <li>
-                    <a asp-action="index" asp-controller="myPlaylist">My Playlist</a>
+                    
+                    <a class="@(TempData["Playlist"] !=null ? "active-nav-btn": " ")" asp-action="index" asp-controller="myPlaylist">My Playlist</a>
                 </li>
                 @if (member != null)
                 {
@@ -106,23 +109,7 @@
                             <p>Contact Us</p>
                             <h2>GOT A QUESTION?</h2>
                         </div>
-                        <form action="">
-                            <div class="row">
-                                <div class="col-12 col-lg-6">
-                                    <input type="text" class="name-inp" placeholder="Name">
-                                </div>
-                                <div class="col-12 col-lg-6">
-                                    <input type="text" class="email-inp" placeholder="E-Mail">
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-lg-12">
-                                    <textarea name="" placeholder="Message" id="" cols="30" rows="10"></textarea>
-                                    <button class="footer-btn">Contact Us</button>
-                                </div>
-                            </div>
-                        </form>
+                         @Html.Partial("_ContactUS", new ContactUsViewModel())
                     </div>
                 </div>
                 <div class="col-12 col-lg-4">
