@@ -11,6 +11,7 @@ namespace Final.ViewModels
         public List<Blog> Blogs { get; set; }
         public List<BlogTags> BlogTags { get; set; }
         public List<Tags> Tags { get; set; }
+        public List<BlogTags> Comments { get; set; }
 
     }
 }

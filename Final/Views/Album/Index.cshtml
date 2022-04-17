@@ -12,7 +12,9 @@
         temp = -2;
     }
     <style>
-
+        #albumList {
+            height: 1260px;
+        }
         .album-page-title-inner {
             display: flex;
             flex-direction: column;
@@ -21,11 +23,21 @@
         .singer-name {
             color: white;
             text-decoration: none;
-            font-size:30px;
+            font-size:30px; 
         }
         footer {
-            top: 162px !important;
+            top: 199px !important;
         }
+        .album-pics{
+            width: 309px!important;
+            height: 309px !important;
+        }
+        @@media screen and (max-width: 768px) {
+            footer {
+                display: none;
+            }
+        }
+      
     </style>
 }
 <main>

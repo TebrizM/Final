@@ -77,6 +77,42 @@ namespace Final.Areas.manage.Controllers
             return RedirectToAction("index");
         }
 
+        public IActionResult Edit(int id)
+        {
+            var track = _context.Tracks.FirstOrDefault(x => x.Id == id);
+
+            if (track == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Albums = _context.Albums.ToList();
+            return View(track);
+        }
+        [HttpPost]
+        public IActionResult Edit(AlbumTrack track)
+        {
+            ViewBag.Albums = _context.Albums.ToList();
+            var oldTrack = _context.Tracks.FirstOrDefault(x => x.Id == track.Id);
+
+            if (oldTrack == null)
+            {
+                return NotFound();
+            }
+
+           
+
+            oldTrack.TackName = track.TackName;
+            oldTrack.AlbumId = track.AlbumId;
+
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
+
+
         public IActionResult Delete(int id)
         {
             AlbumTrack track = _context.Tracks.FirstOrDefault(x => x.Id == id);

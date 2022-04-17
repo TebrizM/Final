@@ -26,26 +26,9 @@ namespace Final.Areas.manage.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
         }
-        //public async Task<IActionResult> test()
-        //{
-        //    AppUser appUser = new AppUser
-        //    {
-        //        FullName = "Super Admin",
-        //        UserName = "SuperAdmins",
-        //        Email = "superadmin@gmail.com"
-        //    };
-
-        //    var result = await _userManager.CreateAsync(appUser, "Admins1234");
-
-        //    return Ok(result.Errors);
-        //}
-
         public async Task<IActionResult> Test()
         {
-            //var result1 = await _roleManager.CreateAsync(new IdentityRole("Admin"));
-            //var result2 = await _roleManager.CreateAsync(new IdentityRole("Member"));
-            //var result3 = await _roleManager.CreateAsync(new IdentityRole("SuperAdmin"));
-
+     
             AppUser admin = await _userManager.FindByNameAsync("SuperAdmins");
 
             var result = await _userManager.AddToRoleAsync(admin, "SuperAdmin");

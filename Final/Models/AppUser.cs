@@ -15,6 +15,7 @@ namespace Final.Models
         public string Country { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
+        public DateTime CreatedAt { get; set; }
         public List<BlogComment> BlogComments { get; set; }
     }
 }

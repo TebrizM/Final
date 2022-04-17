@@ -14,9 +14,28 @@
 }
 
 <style>
-
+    .blog-img img {
+        height: 171px;
+    }
     footer {
-        top: 740px;
+        top: 420px;
+    }
+    #Posts {
+        height: 1027px;
+    }
+    @@media screen and (max-width: 768px){
+        footer{
+            display:none;
+        }
+        .blog-img img {
+            height: 379px;
+        }
+      
+    }
+    @@media screen and (max-width: 425px){
+        .blog-img img {
+            height: 229px;
+        }
     }
 </style>
 
@@ -50,8 +69,8 @@
                             </div>
                             <div class="blog-metas">
                                 <p>by <span>Admin</span></p>|
-                                <p>@item.CreatedAt.ToString("d MMMM, yyy")</p>|
-                                <p>20 Comment</p>
+                                <p>@item.CreatedAt.ToString("d MMMM, yyy")</p>
+           
                             </div>
                             <div class="blog-header">
                                 <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@item.Name</a>
@@ -82,7 +101,7 @@
                         }
                         @if (ViewBag.PageIndex < ViewBag.TotalPages)
                         {
-                            <a class="Next" href="@Url.Action("index","album", new {page=ViewBag.TotalPages})">Next</a>
+                            <a class="Next" href="@Url.Action("index","blog", new {page=ViewBag.TotalPages})">Next</a>
                         }
                     </div>
                 </div>

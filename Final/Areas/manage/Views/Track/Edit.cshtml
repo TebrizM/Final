@@ -1,0 +1,27 @@
+﻿@model AlbumTrack
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Edit</h1>
+            <form asp-action="edit" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="TackName">Track Name</label>
+                    <input class="form-control" asp-for="TackName" placeholder="Enter Track Name">
+                    <span class="text-danger" asp-validation-for="TackName"></span>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label asp-for="AlbumId">Albums</label>
+                    <select class="form-control" asp-for="AlbumId" asp-items="@new SelectList(ViewBag.Albums,nameof(Album.Id),nameof(Album.Name))">
+                    </select>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

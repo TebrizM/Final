@@ -21,6 +21,34 @@
         text-transform: uppercase;
         background: linear-gradient(45deg, #c7911d 0%, #ff6334 100%);
     }
+        #myProfile {
+            height: 1545px;
+        }
+
+    @@media screen and (max-width: 768px){
+        .br-subtitle {
+            right: 238px !important;
+        }
+    }
+    
+    @@media screen and (max-width: 425px) {
+        footer {
+            display: none;
+        }
+
+        .buttons {
+            flex-direction: column;
+        }
+
+        .my-order-btn {
+            margin-right: 30px;
+        }
+
+        .logout-button {
+            margin-right: 30px;
+        }
+    }
+   
 </style>
 <main>
     <section style="margin-bottom: 200px;" id="myProfile">

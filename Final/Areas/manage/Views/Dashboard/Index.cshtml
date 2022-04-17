@@ -4,6 +4,41 @@
     int orderCounter = 0;
     decimal totalPrice = 0;
     int visitorCount = 0;
+    int classic = 0;
+    int rap = 0;
+    int metal = 0;
+    int rock = 0;
+
+    foreach (var item in Model.Albums)
+    {
+        if(item.GenreId == 1)
+        {
+            classic++;
+        }
+        else if(item.GenreId == 2)
+        {
+            rap++;
+        } else if(item.GenreId == 3)
+        {
+            metal++;
+        } else if(item.GenreId == 4)
+        {
+            rock++;
+        }
+    }
+
+    int januser = Model.JanuaryyUsers.Count();
+    int febuser = Model.FebruaryyUsers.Count();
+    int maruser = Model.MarchUsers.Count();
+    int apruser = Model.AprilUsers.Count();
+    int mayuser = Model.MayUsers.Count();
+    int junuser = Model.JuneUsers.Count();
+    int juluser = Model.JulyUsers.Count();
+    int auguser = Model.AugustUsers.Count();
+    int sepuser = Model.SeptemberUsers.Count();
+    int octuser = Model.OctoberUsers.Count();
+    int novuser = Model.NovemberUsers.Count();
+    int decuser = Model.DecemberUsers.Count();
 }
 
 <div class="container-fluid">
@@ -220,7 +255,7 @@
         var myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ["Metal", "Classic", "E-mail", "Other"],
+                labels: ["Metal", "Classic", "Rap", "Rock"],
                 datasets: [{
                     backgroundColor: [
                         "#ffffff",
@@ -228,7 +263,7 @@
                         "rgba(255, 255, 255, 0.50)",
                         "rgba(255, 255, 255, 0.20)"
                     ],
-                    data: [5856, 2602, 1802, 1105],
+                    data: [@metal, @classic, @rap, @rock],
                     borderWidth: [0, 0, 0, 0]
                 }]
             },
@@ -248,6 +283,79 @@
                 }
             }
         });
+
+
+        $(function () {
+            "use strict";
+
+            // chart 1
+
+            var ctx = document.getElementById('chart1').getContext('2d');
+
+
+
+
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    datasets: [{
+                        label: 'New Users',
+                        data: [@januser, @febuser, @maruser, @apruser, @mayuser, @junuser, @juluser, @auguser, @sepuser, @octuser , @novuser, @decuser],
+                        backgroundColor: '#fff',
+                        borderColor: "transparent",
+                        pointRadius: "0",
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false,
+                        labels: {
+                            fontColor: '#ddd',
+                            boxWidth: 40
+                        }
+                    },
+                    tooltips: {
+                        displayColors: false
+                    },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: '#ddd'
+                            },
+                            gridLines: {
+                                display: true,
+                                color: "rgba(221, 221, 221, 0.08)"
+                            },
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: '#ddd'
+                            },
+                            gridLines: {
+                                display: true,
+                                color: "rgba(221, 221, 221, 0.08)"
+                            },
+                        }]
+                    }
+
+                }
+            });
+
+
+            // chart 2
+
+
+
+
+
+
+        });
+
     </script>
 
 }

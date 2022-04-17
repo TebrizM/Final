@@ -29,6 +29,8 @@ namespace Final.Controllers
             {
                 member = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin);
             }
+            if (member == null)
+                return RedirectToAction("login", "account");
 
             CheckoutViewModel checkoutVM = new CheckoutViewModel
             {

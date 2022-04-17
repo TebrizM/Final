@@ -15,6 +15,12 @@
     {
         temp = -2;
     }
+    <style>
+        .tracks-name{
+            display:flex;
+            flex-direction:column;
+        }
+    </style>
 
 }
 
@@ -46,7 +52,7 @@
                         <th scope="row">@counter</th>
                         <td>@item.Name</td>
                         <td>@item.Singer.Name</td>
-                        <td>
+                        <td class="tracks-name">
                             @foreach (var songs in item.AlbumTracks)
                             {
                                 <span>@songs.TackName</span>

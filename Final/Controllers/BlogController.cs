@@ -24,7 +24,7 @@ namespace Final.Controllers
             TempData["Blog"] = "active-nav-btn";
             ViewBag.PageIndex = page;
             ViewBag.TagId = tagId;
-            var blogs = _context.Blogs.Skip((page - 1) * 6).Take(6).ToList();
+            var blogs = _context.Blogs.Skip((page - 1) * 9).Take(9).ToList();
             if (tagId > 3 || tagId < 0)
             {
                 return RedirectToAction("error", "home");

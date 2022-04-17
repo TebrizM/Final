@@ -183,7 +183,7 @@ namespace Final.Areas.manage.Controllers
 
             existalbum.SingerId = album.SingerId;
             existalbum.GenreId = album.GenreId;
-            existalbum.AlbumTracks = album.AlbumTracks;
+   
             existalbum.Name = album.Name;
             existalbum.Desc = album.Desc;
             existalbum.ModifiedAt = DateTime.UtcNow.AddHours(4);

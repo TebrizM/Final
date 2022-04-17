@@ -66,26 +66,7 @@ namespace Final.Controllers
 
             if (member == null)
             {
-                string trackIdsStr = HttpContext.Request.Cookies["playlist"];
-                List<TrackItemViewModel> items = new List<TrackItemViewModel>();
-
-                if (!string.IsNullOrWhiteSpace(trackIdsStr))
-                {
-                    items = JsonConvert.DeserializeObject<List<TrackItemViewModel>>(trackIdsStr);
-
-                }
-                TrackItemViewModel item = items.FirstOrDefault(x => x.TrackId == id);
-
-                if (item == null)
-                {
-                    item = new TrackItemViewModel { TrackId = id, Count = 1 };
-                    items.Add(item);
-
-                }
-                trackIdsStr = JsonConvert.SerializeObject(items);
-
-                HttpContext.Response.Cookies.Append("playlist", trackIdsStr);
-                return RedirectToAction("detail", new { id = albumId });
+                return RedirectToAction("login", "account");
             }
             else
             {

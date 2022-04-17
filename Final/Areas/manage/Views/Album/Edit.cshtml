@@ -23,11 +23,6 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-3">
-                        <label asp-for="AlbumTracks">Tracks</label>
-
-                        <select class="form-control" asp-for="AlbumTracks" asp-items="@new SelectList(ViewBag.Tracks, nameof(AlbumTrack.Id), nameof(AlbumTrack.TackName))"></select>
-                    </div>
-                    <div class="form-group col-3">
                         <label asp-for="SingerId">Singers</label>
                         <select class="form-control" asp-for="SingerId" asp-items="@new SelectList(ViewBag.Singers, nameof(Singer.Id), nameof(Singer.Name))"></select>
                     </div>

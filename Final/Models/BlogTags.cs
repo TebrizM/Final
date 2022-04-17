@@ -10,7 +10,7 @@ namespace Final.Models
         public int Id { get; set; }
         public int BlogId { get; set; }
         public int TagsId { get; set; }
-        public Blog Book { get; set; }
+        public Blog Blog { get; set; }  
         public Tags Tag { get; set; }
     }
 }

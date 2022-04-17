@@ -25,7 +25,32 @@
         .songItem{
             justify-content: flex-start !important;
         }
-
+        .slider-btn{
+            width:12%;
+        }
+        .slider-btn a {
+            text-decoration:none;
+            color: white;
+        }
+     
+        #video {
+            height: 981px;
+        }
+        .album-pics {
+            width: 309px !important;
+            height: 309px !important;
+        }
+        .next-arrow {
+            right: 51rem !important;
+        }
+        @@media screen and (max-width: 768px) {
+            .next-arrow {
+                display:none !important;
+            }
+            .prev-arrow {
+                display: none !important;
+            }
+        }
     </style>
 }
 
@@ -41,7 +66,10 @@
                             <p class="slider-content">
                                 @item.Desc
                             </p>
-                            <button class="slider-btn">@item.BtnText</button>
+                            <div  class="slider-btn">
+
+                            <a asp-action="index" asp-controller="tours">@item.BtnText</a>
+                            </div>
                         </li>
                     }
 
@@ -90,34 +118,41 @@
                 </div>
                 <div class="col-12 col-lg-6 text-end album-button">
                     <a class="viewMyplaylist" asp-action="index" asp-controller="album">
-                        View My Playlist
+                        View Albums
                     </a>
                 </div>
             </div>
             <div class="row my-5">
                 <h1>NEWEST ALBUMS & SINGLES</h1>
             </div>
-            <div class="row my-5">
-                @foreach (var item in Model.Albums)
+            <div class="row">
+                @for (int c = 0; c < 6; c++)
+                
                 {
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="album-card text-center">
-                            <div class="album-image">
-                                <img src="~/uploads/albums/@item.Image" alt="">
-                            </div>
-                            <div class="album-title">
-                                @item.Name
-                            </div>
-                            <div class="album-singer">
-                               @item.Singer.Name
+                    <div class="col-12 col-lg-4 col-md-6">
+                        <div class="album-page-card">
+                            <div class="album-pics">
+                                <img src="~/uploads/albums/@Model.Albums[c].Image" alt="">
+
+                                <div class="album-page-title">
+                                    <div class="album-page-title-inner">
+                                        <div class="album-title">
+                                            @Model.Albums[c].Name
+                                        </div>
+                                        <div class="album-singer">
+                                            @Model.Albums[c].Singer.Name
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 }
 
 
             </div>
+           
         </div>
     </section>
 
@@ -163,25 +198,26 @@
                         </div>
                         <div class="menu_song">
                             <ul>
-                                @foreach (var item in Model.AlbumTracks)
+                                @for (int x = 0; x < 8; x++)
                                 {
                                     counter++;
                                     <li class="songItem">
                                         <span>@counter</span>
-                            
+
                                         <div class="main-track-name">
                                             <h5>
-                                                @item.TackName
+                                                @Model.AlbumTracks[x].TackName
 
 
-                                                <div class="subtitle">@item.Album.Singer.Name</div>
+                                                <div class="subtitle"> @Model.AlbumTracks[x].Album.Singer.Name</div>
                                             </h5>
                                         </div>
-                                       
-                                        <i class="bi playListPlay bi-play-circle-fill" data-src="@item.GeneratedSource" data-index="@i"></i>
+
+                                        <i class="bi playListPlay bi-play-circle-fill" data-src="@Model.AlbumTracks[x].GeneratedSource" data-index="@i"></i>
                                     </li>
                                     i++;
                                 }
+
                             </ul>
                         </div>
                     </div>
@@ -260,9 +296,7 @@
                                 <div>
                                     <p>@Model.Tours[b].SalePrice $</p>
                                 </div>
-                                <div class="ticket-btn">
-                                    <a asp-action="AddOrder" asp-controller="tours" asp-route-id="@Model.Tours[b].Id">@Model.Tours[b].BtnText</a>
-                                </div>
+                              
                             </li>
                             }
 
