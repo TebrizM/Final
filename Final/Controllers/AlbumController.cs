@@ -53,7 +53,7 @@ namespace Final.Controllers
         }
 
 
-        public IActionResult AddTrack(int id)
+        public IActionResult AddTrack(int id, int albumId)
         {
             if (!_context.Tracks.Any(x => x.Id == id))
                 return NotFound();
@@ -85,7 +85,7 @@ namespace Final.Controllers
                 trackIdsStr = JsonConvert.SerializeObject(items);
 
                 HttpContext.Response.Cookies.Append("playlist", trackIdsStr);
-                return RedirectToAction("index", _getTrack(items));
+                return RedirectToAction("detail", new { id = albumId });
             }
             else
             {
@@ -105,7 +105,7 @@ namespace Final.Controllers
 
                 _context.SaveChanges();
                 var items = _context.TrackPlaylistItems.Where(x => x.AppUserId == member.Id).ToList();
-                return RedirectToAction("index", _getTrack(items));
+                return RedirectToAction("detail", new {id = albumId });
             }
         }
 

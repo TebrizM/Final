@@ -26,8 +26,15 @@ using Final.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\wacht\OneDrive\Desktop\Final\Final\Areas\manage\Views\_ViewImports.cshtml"
+using Final.Areas.manage.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"83d027ec4cf8916d61d68b59f8c4e094030554ca", @"/Areas/manage/Views/Slider/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3173816865eda74b4589f2a6907367c40a0e549c", @"/Areas/manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"000bdc44b5c2bd6e2c305095c7534288f1a91d53", @"/Areas/manage/Views/_ViewImports.cshtml")]
     public class Areas_manage_Views_Slider_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PaginatedList<Slider>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -88,7 +95,7 @@ using Final.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-12 d-flex justify-content-between\">\r\n            <h3>Sliders</h3>\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca7026", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca7227", async() => {
                 WriteLiteral("Create");
             }
             );
@@ -164,7 +171,7 @@ using Final.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                           \r\n                            <td>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca10702", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca10903", async() => {
                 WriteLiteral("Edit");
             }
             );
@@ -196,7 +203,7 @@ using Final.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca12984", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca13185", async() => {
                 WriteLiteral("Delete");
             }
             );
@@ -245,7 +252,7 @@ using Final.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("                        <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca16000", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca16201", async() => {
 #nullable restore
 #line 62 "C:\Users\wacht\OneDrive\Desktop\Final\Final\Areas\manage\Views\Slider\Index.cshtml"
                                                                                                                                               Write("<<");
@@ -289,7 +296,7 @@ using Final.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                        <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca19195", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca19396", async() => {
 #nullable restore
 #line 63 "C:\Users\wacht\OneDrive\Desktop\Final\Final\Areas\manage\Views\Slider\Index.cshtml"
                                                                                                                                                                  Write("<");
@@ -357,7 +364,7 @@ using Final.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("                            <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca23300", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca23501", async() => {
 #nullable restore
 #line 70 "C:\Users\wacht\OneDrive\Desktop\Final\Final\Areas\manage\Views\Slider\Index.cshtml"
                                                                                                                                                                                                                                             Write(Model.PageIndex+temp);
@@ -435,7 +442,7 @@ AddHtmlAttributeValue("", 2902, (Model.PageIndex+temp)>Model.TotalPages?"none":"
 #line hidden
 #nullable disable
             WriteLiteral("                        <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca27983", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca28184", async() => {
                 WriteLiteral(">");
             }
             );
@@ -478,7 +485,7 @@ AddHtmlAttributeValue("", 2902, (Model.PageIndex+temp)>Model.TotalPages?"none":"
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                        <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca31162", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d027ec4cf8916d61d68b59f8c4e094030554ca31363", async() => {
                 WriteLiteral(">>");
             }
             );

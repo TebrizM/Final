@@ -8,6 +8,21 @@
         position: relative;
         top: 20px;
     }
+    .tour-btn a {
+        text-decoration: none;
+        position: relative;
+        float: right;
+        font-size: 14px;
+        padding: 20px 33px 15px;
+        min-width: 149px;
+        color: #fff;
+        line-height: 1;
+        text-align: center;
+        font-weight: 700;
+        border: none;
+        text-transform: uppercase;
+        background: linear-gradient(45deg, #503aca 0%, #ea34ff 100%);
+    }
 </style>
 <main>
     <section id="tour">
@@ -32,15 +47,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-lg-8">
-                    <div class="tours-title">
-                        <div class="sub-title">
-                            <p>Upcoming Shows</p>
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="tours-title">
+                            <div class="sub-title">
+                                <p>Upcoming Shows</p>
+                            </div>
+                            <h2>WHEN WE ALL FALL ASLEEP</h2>
                         </div>
-                        <h2>WHEN WE ALL FALL ASLEEP</h2>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="tour-btn">
+                            <a asp-action="checkout" asp-controller="order">View ALL</a>
+                        </div>
                     </div>
                 </div>
-                
             </div>
             <div class="row">
                 <div class="col-12 col-lg-12">
@@ -77,16 +98,11 @@
 
                                         </p>
                                     </div>
-                                    <div class="adding-btns">
-
-
-
-                                        <a asp-action="AddOrder" asp-controller="tours" asp-route-id="@item.Id">
-                                            <i class="bi bi-plus-lg add-button"></i>
-                                        </a>
+                                    <div>
+                                        <p>@item.SalePrice $</p>
                                     </div>
                                     <div class="ticket-btn">
-                                        <a asp-action="checkout" asp-controller="order">@item.BtnText</a>
+                                        <a  asp-action="AddOrder" asp-controller="tours" asp-route-id="@item.Id">@item.BtnText</a>
                                     </div>
                                 </li>
                             }

@@ -228,3 +228,8 @@ function AllPlayIcon(elements) {
     })
 
 }
+if (sessionStorage.getItem("visitor") == undefined) {
+    fetch('https://localhost:44325/home/VisitorCount', { method: 'POST' })
+        .then(async response => await response)
+    sessionStorage.setItem("visitor", "confirmed");
+}

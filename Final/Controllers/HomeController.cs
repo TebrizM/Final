@@ -33,6 +33,16 @@ namespace Final.Controllers
 
             return View(homeVM);
         }
+        [HttpPost]
+        public IActionResult VisitorCount()
+        {
+            WebSiteVisitor visitor = new WebSiteVisitor();
+            visitor.Date = DateTime.UtcNow.AddHours(4);
+            _context.Visitors.Add(visitor);
+            _context.SaveChanges();
+
+            return Ok();
+        }
         public IActionResult Error()
         {
 

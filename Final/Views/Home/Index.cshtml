@@ -228,45 +228,42 @@
                         <ul>
                             @for (int b = 1; b < 5; b++)
                             {
-                                <li>
-                                    <div class="tour-date">
-                                        <h2>@Model.Tours[b].Date.ToString("dd")</h2>
-                                        <span>@Model.Tours[b].Date.ToString("MMM")</span>
-                                    </div>
-                                    <div class="tour-info">
-                                        <p>
+                            <li>
+                                <div class="tour-date">
+                                    <h2>@Model.Tours[b].Date.ToString("dd")</h2>
+                                    <span>@Model.Tours[b].Date.ToString("MMM")</span>
+                                </div>
+                                <div class="tour-info">
+                                    <p>
 
-                                            @Model.Tours[b].Info
-                                        </p>
-                                        <span>
+                                        @Model.Tours[b].Info
+                                    </p>
+                                    <span>
 
-                                            @Model.Tours[b].Desc
-                                        </span>
-                                    </div>
-                                    <div class="tour-location">
-                                        <p>
-                                            <i class="bi bi-geo-alt-fill"></i>
-                                            @Model.Tours[b].Location
+                                        @Model.Tours[b].Desc
+                                    </span>
+                                </div>
+                                <div class="tour-location">
+                                    <p>
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                        @Model.Tours[b].Location
 
-                                        </p>
-                                    </div>
-                                    <div class="tour-date">
-                                        <p>
-                                            <i class="bi bi-clock"></i>
-                                            @Model.Tours[b].Date.ToString("hh:ff")
+                                    </p>
+                                </div>
+                                <div class="tour-date">
+                                    <p>
+                                        <i class="bi bi-clock"></i>
+                                        @Model.Tours[b].Date.ToString("hh:ff")
 
-                                        </p>
-                                    </div>
-                                    <div class="adding-btns">
-                                        <i class="bi bi-dash-lg remove-button"></i>
-                                        <a asp-action="AddOrder" asp-controller="tours" asp-route-id="@Model.Tours[b].Id">
-                                            <i class="bi bi-plus-lg add-button"></i>
-                                        </a>
-                                    </div>
-                                    <div class="ticket-btn">
-                                        <a asp-action="checkout" asp-controller="order">@Model.Tours[b].BtnText</a>
-                                    </div>
-                                </li>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>@Model.Tours[b].SalePrice $</p>
+                                </div>
+                                <div class="ticket-btn">
+                                    <a asp-action="AddOrder" asp-controller="tours" asp-route-id="@Model.Tours[b].Id">@Model.Tours[b].BtnText</a>
+                                </div>
+                            </li>
                             }
 
 

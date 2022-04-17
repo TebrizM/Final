@@ -1,4 +1,12 @@
-﻿<div class="container-fluid">
+﻿@model DashboardViewModel
+
+@{
+    int orderCounter = 0;
+    decimal totalPrice = 0;
+    int visitorCount = 0;
+}
+
+<div class="container-fluid">
 
     <!--Start Dashboard Content-->
 
@@ -7,37 +15,36 @@
             <div class="row row-group m-0">
                 <div class="col-12 col-lg-6 col-xl-3 border-light">
                     <div class="card-body">
-                        <h5 class="text-white mb-0">9526 <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
-                        <div class="progress my-3" style="height:3px;">
-                            <div class="progress-bar" style="width:55%"></div>
-                        </div>
+                        <h5 class="text-white mb-0">@Model.Order.Count <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
+
                         <p class="mb-0 text-white small-font">Total Orders <span class="float-right">+4.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 col-xl-3 border-light">
                     <div class="card-body">
-                        <h5 class="text-white mb-0">8323 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
-                        <div class="progress my-3" style="height:3px;">
-                            <div class="progress-bar" style="width:55%"></div>
-                        </div>
+                        @foreach (var item in Model.Order)
+                        {
+                            totalPrice += item.TotalPrice;
+                        }
+                        <h5 class="text-white mb-0">@totalPrice <span class="float-right"><i class="fa fa-usd"></i></span></h5>
+
+
                         <p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-6 col-xl-3 border-light">
                     <div class="card-body">
-                        <h5 class="text-white mb-0">6200 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
-                        <div class="progress my-3" style="height:3px;">
-                            <div class="progress-bar" style="width:55%"></div>
-                        </div>
+                        <h5 class="text-white mb-0">@Model.Visitors.Count <span class="float-right"><i class="fa fa-eye"></i></span></h5>
+
                         <p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 col-xl-3 border-light">
                     <div class="card-body">
-                        <h5 class="text-white mb-0">5630 <span class="float-right"><i class="fa fa-envira"></i></span></h5>
-                        <div class="progress my-3" style="height:3px;">
-                            <div class="progress-bar" style="width:55%"></div>
-                        </div>
+
+                        <h5 class="text-white mb-0">@Model.Messages.Count <span class="float-right"><i class="fa fa-envira"></i></span></h5>
+
                         <p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                     </div>
                 </div>
@@ -68,7 +75,7 @@
                 <div class="card-body">
                     <ul class="list-inline">
                         <li class="list-inline-item"><i class="fa fa-circle mr-2 text-white"></i>New Visitor</li>
-                        <li class="list-inline-item"><i class="fa fa-circle mr-2 text-light"></i>Old Visitor</li>
+
                     </ul>
                     <div class="chart-container-1">
                         <canvas id="chart1"></canvas>
@@ -126,26 +133,16 @@
                 <div class="table-responsive">
                     <table class="table align-items-center">
                         <tbody>
-                            <tr>
-                                <td><i class="fa fa-circle text-white mr-2"></i> Direct</td>
-                                <td>$5856</td>
-                                <td>+55%</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-circle text-light-1 mr-2"></i>Affiliate</td>
-                                <td>$2602</td>
-                                <td>+25%</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-circle text-light-2 mr-2"></i>E-mail</td>
-                                <td>$1802</td>
-                                <td>+15%</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-circle text-light-3 mr-2"></i>Other</td>
-                                <td>$1105</td>
-                                <td>+5%</td>
-                            </tr>
+                            @foreach (var item in Model.Genres)
+                            {
+
+                                <tr>
+                                    <td><i class="fa fa-circle text-white mr-2"></i> @item.Name</td>
+                                    <td>@item.Albums.Count</td>
+
+                                </tr>
+                            }
+
                         </tbody>
                     </table>
                 </div>
@@ -177,27 +174,29 @@
                     <table class="table align-items-center table-flush table-borderless">
                         <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Photo</th>
+
                                 <th>Product ID</th>
-                                <th>Amount</th>
-                                <th>Date</th>
+                                <th>Phone Number</th>
+                                <th>Order Price</th>
+                                <th>Order Date</th>
                                 <th>Shipping</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Iphone 5</td>
-                                <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-                                <td>#9405822</td>
-                                <td>$ 1250.00</td>
-                                <td>03 Aug 2017</td>
-                                <td>
-                                    <div class="progress shadow" style="height: 3px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 90%"></div>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach (var order in Model.Order)
+                            {
+                                <tr>
+
+
+                                    <td>@order.Id</td>
+                                    <td>@order.PhoneNumber</td>
+                                    <td>@order.TotalPrice</td>
+                                    <td>@order.CreatedAt.ToString("dd-MM-yyyy HH:mm")</td>
+                                    <td>@order.Status</td>
+
+                                </tr>
+                            }
+
 
 
 
@@ -213,3 +212,42 @@
     <!--end overlay-->
 
 </div>
+
+@section Scripts{
+    <script>
+
+        var ctx = document.getElementById("chart2").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Metal", "Classic", "E-mail", "Other"],
+                datasets: [{
+                    backgroundColor: [
+                        "#ffffff",
+                        "rgba(255, 255, 255, 0.70)",
+                        "rgba(255, 255, 255, 0.50)",
+                        "rgba(255, 255, 255, 0.20)"
+                    ],
+                    data: [5856, 2602, 1802, 1105],
+                    borderWidth: [0, 0, 0, 0]
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    position: "bottom",
+                    display: false,
+                    labels: {
+                        fontColor: '#ddd',
+                        boxWidth: 15
+                    }
+                }
+                ,
+                tooltips: {
+                    displayColors: false
+                }
+            }
+        });
+    </script>
+
+}
