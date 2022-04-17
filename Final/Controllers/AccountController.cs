@@ -295,7 +295,7 @@ namespace Final.Controllers
 
             Replaces.Add("{url}", link.ToString());
 
-            await EmailUtil.SendEmailAsync(email, "Salam hörmətli müştəri", path, Replaces);
+            await EmailUtil.SendEmailAsync(email, "Reset Link", path, Replaces);
 
 
 

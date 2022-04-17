@@ -76,7 +76,7 @@ namespace Final.Areas.manage.Controllers
             replaces.Add("{question}", feedBack.Text);
             replaces.Add("{answer}", feedBack.Answer);
             replaces.Add("{root}", _env.WebRootPath.ToString());
-            await EmailUtil.SendEmailAsync(feedBack.Email, "Cavab", path, replaces);
+            await EmailUtil.SendEmailAsync(feedBack.Email, "Your Question", path, replaces);
             return RedirectToAction("Index");
         }
     }
