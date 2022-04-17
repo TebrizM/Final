@@ -1,5 +1,6 @@
 ﻿using Final.Helpers;
 using Final.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace Final.Areas.manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class AlbumController : Controller
     {
         private readonly HnBandContext _context;
@@ -136,17 +138,49 @@ namespace Final.Areas.manage.Controllers
                 ModelState.AddModelError("SingerId", "Singer not found");
                 return View();
             }
-            album.Image = Guid.NewGuid().ToString() + album.AlbumImage.FileName;
-
-            string path = Path.Combine(_env.WebRootPath, "uploads/albums", album.Image);
-
-            using (FileStream stream = new FileStream(path, FileMode.Create))
+          
+            if (album.AlbumImage != null)
             {
-                album.AlbumImage.CopyTo(stream);
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+
+                if (existalbum.Image != null)
+                {
+                    string oldPath = Path.Combine(_env.WebRootPath, "uploads/albums", existalbum.Image);
+
+                    if (System.IO.File.Exists(oldPath))
+                    {
+                        System.IO.File.Delete(oldPath);
+                    }
+                }
+
+
+                if (album.AlbumImage.ContentType != "image/jpeg" && album.AlbumImage.ContentType != "image/png")
+                {
+                    ModelState.AddModelError("ImageFile", "file type must be image/jpeg or image/png");
+                    return View();
+                }
+                if (album.AlbumImage.Length > 2097152)
+                {
+                    ModelState.AddModelError("ImageFile", "file size must be less than 2mb");
+                    return View();
+                }
+
+                album.Image = Guid.NewGuid().ToString() + album.AlbumImage.FileName;
+
+                string path = Path.Combine(_env.WebRootPath, "uploads/albums", album.Image);
+
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    album.AlbumImage.CopyTo(stream);
+                }
+
+                existalbum.Image = album.Image;
+
             }
 
-            existalbum.Image = album.Image;
-          
             existalbum.SingerId = album.SingerId;
             existalbum.GenreId = album.GenreId;
             existalbum.AlbumTracks = album.AlbumTracks;

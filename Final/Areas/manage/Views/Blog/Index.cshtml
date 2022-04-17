@@ -47,10 +47,10 @@
                             <td>
                                 <img width="100" src="~/uploads/blogs/@item.Image" />
                             </td>
-                         <td>
-                            <a asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                            <a asp-action="@(item.IsDeleted?"restore":"delete")" asp-route-id="@item.Id" class="btn btn-@(item.IsDeleted?"info":"danger")">@(item.IsDeleted?"Restore":"Delete")</a>
-                        </td>
+                            <td>
+                                <a asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                                <a asp-action="@(item.IsDeleted?"restore":"delete")" asp-route-id="@item.Id" class="btn btn-@(item.IsDeleted?"info":"danger")">@(item.IsDeleted?"Restore":"Delete")</a>
+                            </td>   
                         </tr>
                     }
 

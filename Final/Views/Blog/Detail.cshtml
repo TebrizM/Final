@@ -3,7 +3,9 @@
 
 <style>
     textarea {
-        margin-bottom: 60px;
+        margin-bottom: 60px; 
+        background-color: #523f3f2e !important;
+        color: #fff !important;
     }
     .sbmnt-btn {
         margin-bottom: 200px;
@@ -51,7 +53,7 @@
                     <div class="blog-detail-metas">
                         <p>by <span>Admin</span></p> |
                         <p>Aug15, 2022</p> |
-                        <p>20 Comment</p>
+                        <p>@Model.Blogs.BlogComments.Count Comment</p>
                     </div>
                     <div class="blog-detail-image">
                         <img src="~/uploads/blogs/@Model.Blogs.Image" alt="">

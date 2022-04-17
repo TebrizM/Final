@@ -203,44 +203,24 @@ namespace Final.Areas.manage.Controllers
         }
         public IActionResult Delete(int id)
         {
-            Blog existBlog = _context.Blogs.FirstOrDefault(x => x.Id == id && !x.IsDeleted);
+            Blog blog = _context.Blogs.FirstOrDefault(x => x.Id == id);
 
-            if (existBlog == null)
-                return NotFound();
-
-            //ViewBag.Genres = _context.Genres.Where(x => !x.IsDeleted).Where(x => x.LiquorFlavorId == id).ToList();
-
-            //foreach (var product in ViewBag.Products)
-            //{
-            //    product.IsDeleted = true;
-            //}
-
-            existBlog.IsDeleted = true;
-            _context.SaveChanges();
-
-            return RedirectToAction("index");
+            return View(blog);
         }
 
-        //RESTORE ACTION
-        public IActionResult Restore(int id)
+        [HttpPost]
+        public IActionResult Delete(Blog blog)
         {
-            Blog existBlog = _context.Blogs.FirstOrDefault(x => x.Id == id && x.IsDeleted);
+            Blog existBlog = _context.Blogs.FirstOrDefault(x => x.Id == blog.Id);
 
             if (existBlog == null)
                 return NotFound();
 
-            //ViewBag.Products = _context.Products.Where(x => x.IsDeleted).Where(x => x.LiquorFlavorId == id).ToList();
+            _context.Blogs.Remove(existBlog);
 
-            //foreach (var product in ViewBag.Products)
-            //{
-            //    product.IsDeleted = false;
-            //}
-
-            existBlog.IsDeleted = false;
             _context.SaveChanges();
 
             return RedirectToAction("index");
         }
-
     }
 }

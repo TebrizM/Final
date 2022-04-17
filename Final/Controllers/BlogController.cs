@@ -19,11 +19,12 @@ namespace Final.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public IActionResult Index(int? tagId)
+        public IActionResult Index(int? tagId, int page = 1)
         {
             TempData["Blog"] = "active-nav-btn";
+            ViewBag.PageIndex = page;
             ViewBag.TagId = tagId;
-
+            var blogs = _context.Blogs.Skip((page - 1) * 6).Take(6).ToList();
             if (tagId > 3 || tagId < 0)
             {
                 return RedirectToAction("error", "home");
@@ -31,11 +32,14 @@ namespace Final.Controllers
            
             BlogViewModel blogVM = new BlogViewModel
             {
-                Blogs = _context.Blogs.ToList(),
+                Blogs = blogs,
                 BlogTags = _context.BlogTags.ToList(),
                 Tags = _context.Tags.ToList(),
     
             };
+
+            ViewBag.TotalPages = (int)Math.Ceiling(blogs.Count() / 6d);
+
             return View(blogVM);
         }
 

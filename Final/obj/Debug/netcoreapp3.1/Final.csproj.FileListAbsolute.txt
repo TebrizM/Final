@@ -726,3 +726,5 @@ C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ContactUs.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\ContactUs\Edit.cshtml.g.cs
 C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\ContactUs\Index.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Blog\Delete.cshtml.g.cs
+C:\Users\wacht\OneDrive\Desktop\Final\Final\obj\Debug\netcoreapp3.1\Razor\Areas\manage\Views\Account\Login.cshtml.g.cs

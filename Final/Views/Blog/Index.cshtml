@@ -1,9 +1,22 @@
 ﻿@model BlogViewModel
 
+@{
+    int counter = (ViewBag.PageIndex - 1) * 6;
+    var temp = -1;
+    if (ViewBag.PageIndex == 1)
+    {
+        temp = 0;
+    }
+    if (temp == ViewBag.TotalPages)
+    {
+        temp = -2;
+    }
+}
+
 <style>
 
     footer {
-        top: 330px;
+        top: 740px;
     }
 </style>
 
@@ -26,21 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-lg-4 col-md-4">
-                    <div class="blog-tags">
-                        <ul class="blog-tag-list" style="display: flex; justify-content: space-between; margin-bottom: 25px;">
-
-                            @foreach (var item in Model.Tags)
-                            {
-                                <li>
-                                    <a style="background-color: @(ViewBag.TagId==item.Id?"white":""); color:@(ViewBag.TagId==item.Id?"black":"white");" asp-action="index" asp-route-TagId="@item.Id" ;> @item.Name </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </div>
+           
             <div class="row">
                 @foreach (var item in Model.Blogs)
                 {
@@ -64,12 +63,29 @@
 
             </div>
             <div class="row">
-                <div class="col-12 col-lg-12">
-                    <div class="loadmore-btn">
-                        <button>Load More Posts</button>
+                <div class="col-12">
+
+                    <div class="site-pagination">
+
+
+                        @if (ViewBag.PageIndex > 1)
+                        {
+                            <a class="" href="@Url.Action("index","blog",new { page=1})">Back</a>
+                        }
+
+                        @for (int i = 1; i <= 3; i++, temp++)
+                        {
+                            if ((ViewBag.PageIndex + temp) != 0 && (ViewBag.PageIndex + temp) != -1)
+                            {
+                                <a href="@Url.Action("index","blog", new { page=ViewBag.PageIndex+temp})" class="@(ViewBag.PageIndex+temp==ViewBag.PageIndex?"active-pagination":"")">@(ViewBag.PageIndex+temp)</a>
+                            }
+                        }
+                        @if (ViewBag.PageIndex < ViewBag.TotalPages)
+                        {
+                            <a class="Next" href="@Url.Action("index","album", new {page=ViewBag.TotalPages})">Next</a>
+                        }
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
