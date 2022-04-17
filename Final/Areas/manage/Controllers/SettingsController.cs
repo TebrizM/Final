@@ -1,4 +1,5 @@
 ﻿using Final.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace Final.Areas.manage.Controllers
 {
     [Area("manage")]
-    //[Authorize(Roles = "SuperAdmin,Admin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class SettingsController : Controller
     {
         private readonly HnBandContext _context;
